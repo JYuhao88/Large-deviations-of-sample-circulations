@@ -186,14 +186,14 @@ $$
 % \end{align*}
 % $A_1$ 表示从状态出发，在n步的回路中，使得每种环按照规定频数出现的路径数量。
 
-% 对于n状态的情况:
-% \begin{align*}
-%     I(\nu) &=  \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
-%     \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}) \\
-%     &= \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
-%     \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c }{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c }
-%     /\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}) \\
-% \end{align*}
+对于n状态的情况:
+\begin{align*}
+    I(\nu) &=  \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
+    \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}) \\
+    &= \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
+    \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c }{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c }
+    /\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}) \\
+\end{align*}
 
 令 $\nu^{i} = \frac{k_i}{n}, ~i\in I$，即 $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$.
 $\tilde{\nu} = \sum_{c \in \mathcal{C}_{\infty}} \nu_{c}$.

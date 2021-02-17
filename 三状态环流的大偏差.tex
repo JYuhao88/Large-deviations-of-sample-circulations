@@ -1,0 +1,75 @@
+\documentclass[cn,hazy,egreen,14pt,normal]{elegantnote}
+\title{三状态环流的rate function}
+
+\author{姜瑜浩}
+\date{\zhtoday}
+
+%command
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{graphicx,float,subfigure}
+\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}   % loads »amsmath«
+
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\newcommand{\grad}{\text{grad}~}
+
+\begin{document}
+\section{三状态环流大偏差的rate function:}
+三状态环流大偏差的rate function:
+\begin{align*}
+    I(\nu) 
+    &= \sum_{i \in I} \left(-\nu^{i} \log \frac{\nu^{i}}{w^{i}} + (\nu^{i} - \nu_{i}) \log(\nu^{i} - \nu_{i})\right) \\
+    &-(\tilde{\nu} - \sum_{i \in I} \nu_i) \log (\tilde{\nu} - \sum_{i \in I} \nu_i)
+    +\sum_{t \in C_{\infty}} \nu_t \log \nu_t \\
+    &- (\nu_{1} \log w_{1} + \nu_{2} \log w_{2} + \nu_{3} \log w_{3})\\
+    &- (\nu_{12} + \nu_{123}) \log(w_{12} + w_{123}) \\
+    &- (\nu_{13} + \nu_{132}) \log(w_{13} + w_{132}) \\
+    &- (\nu_{12} + \nu_{132}) \log(w_{12} + w_{132}) \\
+    &- (\nu_{23} + \nu_{123}) \log(w_{23} + w_{123}) \\
+    &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
+    &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132}) 
+\end{align*}
+其中 $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$，例如 $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$。
+$\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$。
+$w^i$, $w_i$ 表示类似的含义。
+
+\section{$p_{13}=0$的情形}
+rate function:
+\begin{align*}
+    I(\nu)
+    &= -(\nu^{1} \log (\frac{\nu^{1}}{w^{1}}) + \nu^{2} \log (\frac{\nu^{2}}{w^{2}}) + \nu^{3} \log (\frac{\nu^{3}}{w^{3}})) \\
+    &= \nu_{1} \log (\frac{\nu_{1}}{w_{1}}) + \nu_{2} \log (\frac{\nu_{2}}{w_{2}}) + \nu_{3} \log (\frac{\nu_{3}}{w_{3}}) \\
+    &= (\nu_{12}+\nu{123}) \log(\frac{\nu_{12}+\nu{123}}{w_{12}+w{123}}) +
+    (\nu_{23}+\nu{123}) \log(\frac{\nu_{23}+\nu{123}}{w_{23}+w{123}}) \\
+    &+ \nu_{12} \log(\frac{\nu_{12}}{w_{12}}) + \nu_{23} \log(\frac{\nu_{23}}{w_{23}}) + \nu_{123} \log(\frac{\nu_{123}}{w_{123}}) \\
+\end{align*}
+即
+\begin{align*}
+    I(\nu) &=  \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
+    \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}) \\
+    &= \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
+    \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c }{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c }
+    /\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}) \\
+\end{align*}
+
+\section{$p_{ii}=0$的情形}
+rate function:
+\begin{align*}
+    I(\nu)
+    &= \sum_{i \in I} (\nu^{i}-\nu_{i}) \log (w^{i}-w_{i})
+    - (\tilde{\nu} - \sum_{i \in I} \nu^{i}) \log (\tilde{\nu} - \sum_{i \in I} \nu^{i}) \\
+    &+ \nu_{12} \log \nu_{12} + \nu_{23} \log \nu_{23} + \nu_{13} \log \nu_{13} +\nu_{123} \log \nu_{123} + \nu_{132} \log \nu_{132} \\
+    &- (\nu_{1} \log w_{1} + \nu_{2} \log w_{2} + \nu_{3} \log w_{3})\\
+    &- (\nu_{12} + \nu_{123}) \log(w_{12} + w_{123}) \\
+    &- (\nu_{13} + \nu_{132}) \log(w_{13} + w_{132}) \\
+    &- (\nu_{12} + \nu_{132}) \log(w_{12} + w_{132}) \\
+    &- (\nu_{23} + \nu_{123}) \log(w_{23} + w_{123}) \\
+    &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
+    &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132})
+\end{align*}
+
+
+\end{document}
