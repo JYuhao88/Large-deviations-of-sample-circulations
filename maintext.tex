@@ -1,0 +1,115 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx,epsfig}
+\usepackage{fancyhdr,fancybox,float}
+\usepackage[title]{appendix}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage[sort&compress, numbers]{natbib}
+\usepackage{geometry}
+\usepackage{extarrows,chemarrow,xypic}
+\usepackage{color}
+\usepackage[small]{caption2}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+
+
+%%%%%%%%%% 字体支持 %%%%%%%%%%%%
+%\usepackage{ccmap}                  % 使pdfLatex生成的文件支持复制等
+%\usepackage{CJK,CJKnumb,CJKulem}    % 中文支持
+\usepackage{times}                   % 包括 Times Roman + Helvetica + Courier
+%\usepackage{palatino}               % 包括 Palatino + Helvetica + Courier
+%\usepackage{newcent}                % 包括 New Century Schoolbook + Avant Garde + Courier
+%\usepackage{bookman}                % 包括 Bookman + Avant Garde + Courier
+
+%%%%%%%%%% 数学符号公式 %%%%%%%%%%
+%\usepackage{latexsym}
+%\usepackage{amsmath}                % AMS LaTeX宏包
+\usepackage{amssymb}                 % 用来排版漂亮的数学公式
+%\usepackage{amsbsy}
+\usepackage{amsthm}
+%\usepackage{amsfonts}
+\usepackage{mathrsfs}                % 英文花体字体
+%\usepackage{bm}                     % 数学公式中的黑斜体
+\usepackage{bbm}
+%\usepackage{relsize}                % 调整公式字体大小：\mathsmaller, \mathlarger
+\usepackage{hyperref}                % 生成书签
+
+%字体
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\captionlabeldelim}{.}
+%字号
+\newcommand{\paperfont}{\fontsize{11pt}{1.2\baselineskip}\selectfont}
+%页边距
+\geometry{top=0.9in,bottom=0.9in,left=1in,right=1in}
+%段落缩进
+\parindent 4ex
+\pagebreak[4]
+
+%%%%%%%%%% 正文 %%%%%%%%%%
+\begin{document}
+%\linenumbers
+	
+%%%%%%%%%% 定理类环境的定义 %%%%%%%%%%
+\theoremstyle{definition}
+\makeatletter
+\thm@headfont{\bf}
+\makeatother
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{assumption}[theorem]{Assumption}
+
+%%%%%%%%%% 页眉和页脚的设置 %%%%%%%%%%
+\lhead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+%%%%%%%%%% 一些重定义 %%%%%%%%%%
+\renewcommand{\refname}{References}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\renewcommand{\proofname}{Proof}
+	
+%%%%%%%%%% 符号重定义 %%%%%%%%%%
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\one}{\mathbbm{1}}
+\newcommand{\Pnum}{\mathbb{P}}
+\newcommand{\Enum}{\mathbb{E}}
+\newcommand{\Rnum}{\mathbb{R}}
+\newcommand{\dnum}{\mathrm{d}}
+\newcommand{\hyper}{{}_2F_1}
+\newcommand{\confl}{{}_1F_1}
+
+%%%%%%%%%% Title and authors %%%%%%%%%%
+\title{\textbf{}}
+\author{}
+\date{}
+\maketitle
+%\tableofcontents
+\thispagestyle{empty}
+
+%%%%%%%%%% Page Styles %%%%%%%%%%%
+\paperfont
+
+%%%%%%%%%% Abstract %%%%%%%%%%
+\begin{abstract}
+\end{abstract}
+
+
+%%%%%%%%%% Introduction %%%%%%%%%%
+\section{Introduction}
+
+
+%%%%%%%%%% references %%%%%%%%%%
+\setlength{\bibsep}{5pt}
+\small\bibliographystyle{nature}
+\bibliography{reference}
+
+\end{document}

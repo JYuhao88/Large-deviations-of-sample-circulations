@@ -1,24 +1,109 @@
-\documentclass[cn,hazy,egreen,14pt,normal]{elegantnote}
-\title{三状态环流的rate function}
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx,epsfig}
+\usepackage{fancyhdr,fancybox,float}
+\usepackage[title]{appendix}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage[sort&compress, numbers]{natbib}
+\usepackage{geometry}
+\usepackage{extarrows,chemarrow,xypic}
+\usepackage{color}
+\usepackage[small]{caption2}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
 
-\author{姜瑜浩}
+
+%%%%%%%%%% 字体支持 %%%%%%%%%%%%
+%\usepackage{ccmap}                  % 使pdfLatex生成的文件支持复制等
+%\usepackage{CJK,CJKnumb,CJKulem}    % 中文支持
+\usepackage{times}                   % 包括 Times Roman + Helvetica + Courier
+%\usepackage{palatino}               % 包括 Palatino + Helvetica + Courier
+%\usepackage{newcent}                % 包括 New Century Schoolbook + Avant Garde + Courier
+%\usepackage{bookman}                % 包括 Bookman + Avant Garde + Courier
+
+%%%%%%%%%% 数学符号公式 %%%%%%%%%%
+%\usepackage{latexsym}
+%\usepackage{amsmath}                % AMS LaTeX宏包
+\usepackage{amssymb}                 % 用来排版漂亮的数学公式
+%\usepackage{amsbsy}
+\usepackage{amsthm}
+%\usepackage{amsfonts}
+\usepackage{mathrsfs}                % 英文花体字体
+%\usepackage{bm}                     % 数学公式中的黑斜体
+\usepackage{bbm}
+%\usepackage{relsize}                % 调整公式字体大小：\mathsmaller, \mathlarger
+\usepackage{hyperref}                % 生成书签
+
+%字体
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\captionlabeldelim}{.}
+%字号
+\newcommand{\paperfont}{\fontsize{11pt}{1.2\baselineskip}\selectfont}
+%页边距
+\geometry{top=0.9in,bottom=0.9in,left=1in,right=1in}
+%段落缩进
+\parindent 4ex
+\pagebreak[4]
+
+%%%%%%%%%% 正文 %%%%%%%%%%
+\begin{document}
+%\linenumbers
+	
+%%%%%%%%%% 定理类环境的定义 %%%%%%%%%%
+\theoremstyle{definition}
+\makeatletter
+\thm@headfont{\bf}
+\makeatother
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{assumption}[theorem]{Assumption}
+
+%%%%%%%%%% 页眉和页脚的设置 %%%%%%%%%%
+\lhead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+%%%%%%%%%% 一些重定义 %%%%%%%%%%
+\renewcommand{\refname}{References}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\renewcommand{\proofname}{Proof}
+	
+%%%%%%%%%% 符号重定义 %%%%%%%%%%
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\one}{\mathbbm{1}}
+\newcommand{\Pnum}{\mathbb{P}}
+\newcommand{\Enum}{\mathbb{E}}
+\newcommand{\Rnum}{\mathbb{R}}
+\newcommand{\dnum}{\mathrm{d}}
+\newcommand{\hyper}{{}_2F_1}
+\newcommand{\confl}{{}_1F_1}
+
+\title{The rate function for circulation of three state Markov chain}
+
+\author{Yuhao Jiang}
 \date{\zhtoday}
 
-%command
-\usepackage{array}
-\usepackage{amssymb}
-\usepackage{graphicx,float,subfigure}
-\usepackage{subfigure}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{mathtools}   % loads »amsmath«
+\maketitle
+%\tableofcontents
+\thispagestyle{empty}
 
-\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
-\newcommand{\grad}{\text{grad}~}
+%%%%%%%%%% Page Styles %%%%%%%%%%%
+\paperfont
 
-\begin{document}
-\section{三状态环流大偏差的rate function:}
-三状态环流大偏差的rate function:
+%%%%%%%%%% Abstract %%%%%%%%%%
+\begin{abstract}
+\end{abstract}
+
+\section{The rate function for circulation of three state Markov chain}
 \begin{align*}
     I(\nu) 
     &= \sum_{i \in I} \left(-\nu^{i} \log \frac{\nu^{i}}{w^{i}} + (\nu^{i} - \nu_{i}) \log(\nu^{i} - \nu_{i})\right) \\
@@ -32,15 +117,15 @@
     &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
     &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132}) 
 \end{align*}
-其中 $I=\{1, 2, 3\}$ 是马氏链的状态空间。
+where $I=\{1, 2, 3\}$ is the state space for Markov chain。
 $$\mathcal{C}_{\infty} = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1, 32)$$
-表示所有可能出现环的集合。
-$\nu_c$ 表示环 $c$ 出现的频率，$w_c$ 表示环 $c$ 的环流。\\
-且 $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$，例如 $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$。
+is the class of all cycles occurring.
+$\nu_c$ is the frequence of $c$ occurring, $w_c$ is the circulation of $c$.\\
+And $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$。
 $\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$。\\
-$w^i$, $w_i$ 表示类似的含义。
+$w^i$, $w_i$ has the similar definition.
 
-由$p_{ii}=0$情况的想法，可以得：
+Refer to the result of $p_{ii}=0$, we can get：
 \begin{align*}
     I(\nu)
     &= 
@@ -58,15 +143,40 @@ $w^i$, $w_i$ 表示类似的含义。
     &+ \nu_{132} \log(\frac{1}{p_{13}p_{32}p_{21}} \frac{\nu_{132}}{\nu_{12}+\nu_{23}+\nu_{13}+\nu_{123}+\nu_{132}}
     \frac{\nu^{1}-\nu_{1}}{\nu^{1}}\frac{\nu^{2}-\nu_{2}}{\nu^{2}} \frac{\nu^{3}-\nu_{3}}{\nu^{3}})) \\
 \end{align*}
-数值上已经验证：
-当 $\nu=w$时，有：
+
+So we need to valid following proposition. if $\nu=w$, then
 $$
 \frac{1}{p_{12}p_{21}} \frac{\nu_{12}}{\nu_{12}+\nu_{23}+\nu_{13}+\nu_{123}+\nu_{132}} \frac{\nu^{1}-\nu_{1}}{\nu^{1}}\frac{\nu^{2}-\nu_{2}}{\nu^{2}} = 1
 $$
 $$
 \frac{1}{p_{12}p_{23}p_{31}} \frac{\nu_{123}}{\nu_{12}+\nu_{23}+\nu_{13}+\nu_{123}+\nu_{132}}\frac{\nu^{1}-\nu_{1}}{\nu^{1}}\frac{\nu^{2}-\nu_{2}}{\nu^{2}} \frac{\nu^{3}-\nu_{3}}{\nu^{3}} = 1
 $$
-\section{$p_{13}=0$的情形}
+We use
+\begin{align*}
+    \frac{w^{1}-w_{1}}{w^{1}} &= \frac{w_{12}+w_{13}+w_{123}+w_{132}}{w_{1}+w_{12}+w_{13}+w_{123}+w_{132}} \\
+    &= p_{12}+p_{13} \\
+    &= p_{21}+p_{31} \\
+    &= 1 - p_{11} \\
+    &= D(\{2, 3\}^c)
+\end{align*}
+and
+\begin{align*}
+    w_{12} &= p_{12}p_{21} \frac{D(\{1, 2\}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
+    w_{13} &= p_{13}p_{31} \frac{D(\{1, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
+    w_{23} &= p_{23}p_{32} \frac{D(\{2, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
+    w_{123} &= p_{12}p_{23}p_{31} \frac{D(\{1, 2, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
+    w_{132} &= p_{13}p_{32}p_{21} \frac{D(\{1, 2, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)}
+\end{align*}
+substitute $w$, the above proposition can be valid.
+
+By above validation, we also know:
+\begin{align*}
+    w_{12}+w_{13}+w_{23}+w_{123}+w_{132} &= \frac{(1-p_{11})(1-p_{22})(1-p_{33})}{\sum_{i\in I} D(\{i\}^c)} \\
+    &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in I} D(\{i\}^c)}
+\end{align*}
+
+
+\section{$p_{13}=0$}
 rate function:
 \begin{align*}
     I(\nu)
@@ -76,7 +186,7 @@ rate function:
     (\nu_{23}+\nu_{123}) \log(\frac{\nu_{23}+\nu_{123}}{w_{23}+w{123}}) \\
     &+ \nu_{12} \log(\frac{\nu_{12}}{w_{12}}) + \nu_{23} \log(\frac{\nu_{23}}{w_{23}}) + \nu_{123} \log(\frac{\nu_{123}}{w_{123}}) \\
 \end{align*}
-即
+That is
 \begin{align*}
     I(\nu) &=  \sum_{i, j \in I} \left(\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1}
     \nu_c \right) \log(\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} w_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i, j)=1} \nu_c \sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}) \\
@@ -85,7 +195,7 @@ rate function:
     /\frac{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} w_c}{\sum_{c \in \mathcal{C_{\infty}}, J_c(i)=1} \nu_c}) \\
 \end{align*}
 
-\section{$p_{ii}=0$的情形}
+\section{$p_{ii}=0$}
 rate function:
 \begin{align*}
     I(\nu)
@@ -100,7 +210,7 @@ rate function:
     &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
     &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132}) 
 \end{align*}
-化简得：
+We can simply it to following formula:
 \begin{align*}
     I(\nu)
     &= \nu_{12} \log(\frac{w_{12} + w_{13} +w_{123} + w_{132}}{w_{12}+w_{123}}
@@ -126,7 +236,8 @@ rate function:
     &+ \nu_{123} \log(\frac{1}{p_{12}p_{23}p_{31}} \frac{\nu_{123}}{\nu_{12}+\nu_{23}+\nu_{13}+\nu_{123}+\nu_{132}}) \\
     &+ \nu_{132} \log(\frac{1}{p_{13}p_{32}p_{21}} \frac{\nu_{132}}{\nu_{12}+\nu_{23}+\nu_{13}+\nu_{123}+\nu_{132}})
 \end{align*}
-可进一步考虑联系环流的表达式
+
+Associationg the expression of circulation, and we can further considered
 \begin{align*}
     w_{12} &= p_{12}p_{21} \frac{D({1, 2}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
     w_{13} &= p_{13}p_{31} \frac{D({1, 3}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
@@ -135,13 +246,13 @@ rate function:
     w_{132} &= p_{13}p_{32}p_{21} \frac{D({1, 2, 3}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
 \end{align*}
 
-只需证 ：
+We only need to valid ：
 $$
-\nu_{12} + \nu_{23} + \nu_{13} + \nu_{123} + \nu_{132} = 1 / \sum_{i\in I} D(\{i\}^c)
+w_{12} + w_{23} + w_{13} + w_{123} + w_{132} = 1 / \sum_{i\in I} D(\{i\}^c)
 $$
-即证（$p_{ii}=0$）：
+Using $p$ to express $w$, we can get ($p_{ii}=0$)：
 $$
 p_{12}p_{21} + p_{13}p_{31} + p_{23}p_{32} + p_{12}p_{23}p_{31} + p_{13}p_{32}p_{21} = 1
 $$
-用 $p_{12}, p_{21}, p_{31}$带换其他变量，可证。
+And we can valid it by calculation
 \end{document}
