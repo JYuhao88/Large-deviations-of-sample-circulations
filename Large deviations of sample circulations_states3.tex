@@ -93,7 +93,7 @@
 \date{\zhtoday}
 
 \maketitle
-%\tableofcontents
+% \tableofcontents
 \thispagestyle{empty}
 
 %%%%%%%%%% Page Styles %%%%%%%%%%%
@@ -175,6 +175,11 @@ By above validation, we also know:
     &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in I} D(\{i\}^c)}
 \end{align*}
 
+\begin{align*}
+    I(\nu) &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in I}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
+    &-(\tilde{\nu} - \sum_{i\in I}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in I}\nu_i}{\tilde{w} - \sum_{i\in I}w_i}) \\
+    &-\sum_{i\in I} \nu^i \log (\frac{\nu^i}{w^i})
+\end{align*}
 
 \section{$p_{13}=0$}
 rate function:
