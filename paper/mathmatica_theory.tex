@@ -1,0 +1,105 @@
+% Full chain: pdflatex -> bibtex -> pdflatex -> pdflatex
+\documentclass[11pt,en,cite=authoryear]{elegantpaper}
+
+\title{Circulation theory of enzyme kinetics}
+
+\author{Yuhao Jiang}
+\date{\today}
+
+%command
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{graphicx,float,subfigure}
+\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}   % loads »amsmath«
+
+
+\begin{document}
+
+\maketitle
+
+Here we adopt the presentation given by Kalpazatidou.
+Let $X=(X_n)_{n\ge 0}$ be a discrete-time Markov chain with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. \\
+
+\begin{definition}
+    A circuit function in a finite set S is a periodic function c, which maps the set $\mathbf{Z}$ of integers to S.
+\end{definition}
+
+% \begin{definition}
+%     The two circuit function $c$ and $c'$ are equivalent if and only if it exists $k$ such that $c(n) = c'(n+k)$ for each $n \in \mathbf{Z}$, the smallest integer $k$ is the period of $c$. 
+% \end{definition}
+
+\begin{definition}
+    Let $\mathcal{C}_n(\omega)$ be the class of all cycles occurring along the sample path $\{\xi_l(\omega)\}$
+\end{definition}
+
+% \begin{definition}
+%     $\Omega_n = \mathcal{S}^{n} = \left\{\omega = (\omega_{n+1}):  \omega_{n+1} = \omega_1 \right\}, n \in Z^+$
+%     is $n$ step orbit space, and start from $\omega_1$, along this trajectory, pass $n$ step, can return to $\omega_1$.
+% \end{definition}
+
+% \begin{definition}
+%     Let
+%     $$
+%     K_n = \left\{\omega \in \Omega_n : w_{c, n}(\omega) = k^c \right\} 
+%     $$
+%     denote the orbit space given the number of each circuit, and the orbit length is $n$. And let $|K_n|$ denote the size of $|K_n|$.
+%     $h^i = \sum_{J_c(i)=1} k^c$
+% \end{definition}
+
+\begin{definition} %% follow Jia2016
+    Let $N_n^c$ denote the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_n^c$ along cycle $c$ by time $t$ is defined as
+    $$
+    J_n^c = \frac{1}{n} N_n^c
+    $$
+    and the circulation $J^c$ along cycle $c$ is a nonnegative real number defined as the following almost sure limit:
+    $$
+    J^c = \lim_{n \rightarrow \infty} J_n^c, \quad a.s.
+    $$
+    which represents the number of times that cycle $c$ ic formed per unit time.
+\end{definition}
+
+\begin{lemma}
+    \begin{align*}
+        \mathbb{P}(J^c = \nu_c, \forall c \in \mathcal{C}_n(\omega)) = - \min I(\nu)
+    \end{align*}
+    where 
+\end{lemma}
+
+\section{Large deviation of circulation for two state Markov chains}
+\begin{align*}
+    I(\nu) &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) + \nu_{2}\log(\frac{w_{2}}{w_{1}+w_{12}}) + 2\nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
+\end{align*}
+
+\section{Large deviation of circulation for three state Markov chains}
+\begin{align*}
+    I(\nu) 
+    &= \sum_{i \in I} \left(-\nu^{i} \log \frac{\nu^{i}}{w^{i}} + (\nu^{i} - \nu_{i}) \log(\nu^{i} - \nu_{i})\right) \\
+    &-(\tilde{\nu} - \sum_{i \in I} \nu_i) \log (\tilde{\nu} - \sum_{i \in I} \nu_i)
+    +\sum_{t \in C_{\infty}} \nu_t \log \nu_t \\
+    &- (\nu_{1} \log w_{1} + \nu_{2} \log w_{2} + \nu_{3} \log w_{3})\\
+    &- (\nu_{12} + \nu_{123}) \log(w_{12} + w_{123}) \\
+    &- (\nu_{13} + \nu_{132}) \log(w_{13} + w_{132}) \\
+    &- (\nu_{12} + \nu_{132}) \log(w_{12} + w_{132}) \\
+    &- (\nu_{23} + \nu_{123}) \log(w_{23} + w_{123}) \\
+    &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
+    &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132}) 
+\end{align*}
+where $I=\{1, 2, 3\}$ is the state space for Markov chains。
+$$\mathcal{C}_{\infty} = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1,3,2)$$
+is the class of all cycles occurring.
+$\nu_c$ is the frequence of $c$ occurring, $w_c$ is the circulation of $c$.\\
+And $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$。
+$\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$。\\
+$w^i$, $w_i$ has the similar definition.
+
+\section{Large deviation of circulation for multi-state Markov chains}
+
+% \begin{thebibliography}{99}
+%     \bibitem{mla}
+%     KALPAZIDOU, S. L. (1995). "Cycle Representations of Markov Processes" Springer, New York. MR1336140
+% \end{thebibliography}
+
+\end{document}

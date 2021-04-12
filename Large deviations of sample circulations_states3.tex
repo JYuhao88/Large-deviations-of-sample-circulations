@@ -1,109 +1,20 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage{graphicx,epsfig}
-\usepackage{fancyhdr,fancybox,float}
-\usepackage[title]{appendix}
-\usepackage{indentfirst}
-\usepackage{verbatim}
-\usepackage[sort&compress, numbers]{natbib}
-\usepackage{geometry}
-\usepackage{extarrows,chemarrow,xypic}
-\usepackage{color}
-\usepackage[small]{caption2}
-\usepackage{microtype}
-\DisableLigatures[f]{encoding = *, family = *}
+\documentclass[11pt,en,cite=authoryear]{elegantpaper}
 
+\title{The rate function for circulation of three state Markov chains}
 
-%%%%%%%%%% 字体支持 %%%%%%%%%%%%
-%\usepackage{ccmap}                  % 使pdfLatex生成的文件支持复制等
-%\usepackage{CJK,CJKnumb,CJKulem}    % 中文支持
-\usepackage{times}                   % 包括 Times Roman + Helvetica + Courier
-%\usepackage{palatino}               % 包括 Palatino + Helvetica + Courier
-%\usepackage{newcent}                % 包括 New Century Schoolbook + Avant Garde + Courier
-%\usepackage{bookman}                % 包括 Bookman + Avant Garde + Courier
-
-%%%%%%%%%% 数学符号公式 %%%%%%%%%%
-%\usepackage{latexsym}
-%\usepackage{amsmath}                % AMS LaTeX宏包
-\usepackage{amssymb}                 % 用来排版漂亮的数学公式
-%\usepackage{amsbsy}
-\usepackage{amsthm}
-%\usepackage{amsfonts}
-\usepackage{mathrsfs}                % 英文花体字体
-%\usepackage{bm}                     % 数学公式中的黑斜体
-\usepackage{bbm}
-%\usepackage{relsize}                % 调整公式字体大小：\mathsmaller, \mathlarger
-\usepackage{hyperref}                % 生成书签
-
-%字体
-\renewcommand{\rmdefault}{ptm}
-\renewcommand{\captionlabeldelim}{.}
-%字号
-\newcommand{\paperfont}{\fontsize{11pt}{1.2\baselineskip}\selectfont}
-%页边距
-\geometry{top=0.9in,bottom=0.9in,left=1in,right=1in}
-%段落缩进
-\parindent 4ex
-\pagebreak[4]
+\author{Yuhao Jiang}
+\date{\today}
 
 %%%%%%%%%% 正文 %%%%%%%%%%
 \begin{document}
-%\linenumbers
-	
-%%%%%%%%%% 定理类环境的定义 %%%%%%%%%%
-\theoremstyle{definition}
-\makeatletter
-\thm@headfont{\bf}
-\makeatother
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{assumption}[theorem]{Assumption}
-
-%%%%%%%%%% 页眉和页脚的设置 %%%%%%%%%%
-\lhead{}
-\rhead{}
-\lfoot{}
-\rfoot{}
-
-%%%%%%%%%% 一些重定义 %%%%%%%%%%
-\renewcommand{\refname}{References}
-\renewcommand{\figurename}{Figure}
-\renewcommand{\tablename}{Table}
-\renewcommand{\proofname}{Proof}
-	
-%%%%%%%%%% 符号重定义 %%%%%%%%%%
-\newcommand{\diag}{\mathrm{diag}}
-\newcommand{\tr}{\mathrm{tr}}
-\newcommand{\re}{\mathrm{Re}}
-\newcommand{\one}{\mathbbm{1}}
-\newcommand{\Pnum}{\mathbb{P}}
-\newcommand{\Enum}{\mathbb{E}}
-\newcommand{\Rnum}{\mathbb{R}}
-\newcommand{\dnum}{\mathrm{d}}
-\newcommand{\hyper}{{}_2F_1}
-\newcommand{\confl}{{}_1F_1}
-
-\title{The rate function for circulation of three state Markov chain}
-
-\author{Yuhao Jiang}
-\date{\zhtoday}
-
 \maketitle
-% \tableofcontents
-\thispagestyle{empty}
 
-%%%%%%%%%% Page Styles %%%%%%%%%%%
-\paperfont
+\section{The rate function for circulation of two state Markov chains}
+\begin{align*}
+    I(\nu) &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) + \nu_{2}\log(\frac{w_{2}}{w_{1}+w_{12}}) + 2\nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
+\end{align*}
 
-%%%%%%%%%% Abstract %%%%%%%%%%
-\begin{abstract}
-\end{abstract}
-
-\section{The rate function for circulation of three state Markov chain}
+\section{The rate function for circulation of three state Markov chains}
 \begin{align*}
     I(\nu) 
     &= \sum_{i \in I} \left(-\nu^{i} \log \frac{\nu^{i}}{w^{i}} + (\nu^{i} - \nu_{i}) \log(\nu^{i} - \nu_{i})\right) \\
@@ -117,8 +28,8 @@
     &- (\nu_{13} + \nu_{123}) \log(w_{13} + w_{123}) \\
     &- (\nu_{23} + \nu_{132}) \log(w_{23} + w_{132}) 
 \end{align*}
-where $I=\{1, 2, 3\}$ is the state space for Markov chain。
-$$\mathcal{C}_{\infty} = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1, 32)$$
+where $I=\{1, 2, 3\}$ is the state space for Markov chains。
+$$\mathcal{C}_{\infty} = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1,3,2)$$
 is the class of all cycles occurring.
 $\nu_c$ is the frequence of $c$ occurring, $w_c$ is the circulation of $c$.\\
 And $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$。
@@ -169,7 +80,7 @@ and
 \end{align*}
 substitute $w$, the above proposition can be valid.
 
-By above validation, we also know:
+By the above validation, we also know:
 \begin{align*}
     w_{12}+w_{13}+w_{23}+w_{123}+w_{132} &= \frac{(1-p_{11})(1-p_{22})(1-p_{33})}{\sum_{i\in I} D(\{i\}^c)} \\
     &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in I} D(\{i\}^c)}
@@ -181,10 +92,25 @@ By above validation, we also know:
     &-\sum_{i\in I} \nu^i \log (\frac{\nu^i}{w^i})
 \end{align*}
 
+\begin{align*}
+    I(\nu) &\ge \sum_{i\in I} \nu_{i}\log \frac{\nu_{i}}{w_i} + \sum_{i\in I}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
+    - \sum_{i\in I} \nu^i \log (\frac{\nu^i}{w^i})\\
+    &+ \sum_{c \in \mathcal{C}_{\infty}, c\neq \nu_{i}} \nu_{c} \log \frac{\nu_{c}}{w_c} 
+    -(\tilde{\nu} - \sum_{i\in I}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in I}\nu_i}{\tilde{w} - \sum_{i\in I}w_i}) \\
+    &\ge \sum_{i\in I} \nu^i \log (\frac{\nu^i}{w^i}) - \sum_{i\in I} \nu^i \log (\frac{\nu^i}{w^i})\\
+    &+ \sum_{c \in \mathcal{C}_{\infty}, c\neq \nu_{i}} \frac{\nu_{c}}{\tilde{\nu} - \sum_{i\in I}\nu_i} \log (\frac{\nu_{c}}{\tilde{\nu} - \sum_{i\in I}\nu_i} / \frac{w_{c}}{\tilde{w} - \sum_{i\in I}w_{i}}) \\
+    &\ge 0
+\end{align*}
+
 \section{$p_{13}=0$}
 rate function:
 \begin{align*}
     I(\nu)
+    &= -(\nu^{1} \log (\frac{\nu^{1}}{w^{1}}) + \nu^{2} \log (\frac{\nu^{2}}{w^{2}}) + \nu^{3} \log (\frac{\nu^{3}}{w^{3}})) \\
+    &+ \nu_{1} \log (\frac{\nu_{1}}{w_{1}}) + \nu_{2} \log (\frac{\nu_{2}}{w_{2}}) + \nu_{3} \log (\frac{\nu_{3}}{w_{3}}) \\
+    &+ (\nu_{12}+\nu_{123}) \log(\frac{\nu_{12}+\nu_{123}}{w_{12}+w{123}}) +
+    (\nu_{23}+\nu_{123}) \log(\frac{\nu_{23}+\nu_{123}}{w_{23}+w{123}}) \\
+    &+ \nu_{12} \log(\frac{\nu_{12}}{w_{12}}) + \nu_{23} \log(\frac{\nu_{23}}{w_{23}}) + \nu_{123} \log(\frac{\nu_{123}}{w_{123}}) \\
     &= -(\nu^{1} \log (\frac{\nu^{1}}{w^{1}}) + \nu^{2} \log (\frac{\nu^{2}}{w^{2}}) + \nu^{3} \log (\frac{\nu^{3}}{w^{3}})) \\
     &+ \nu_{1} \log (\frac{\nu_{1}}{w_{1}}) + \nu_{2} \log (\frac{\nu_{2}}{w_{2}}) + \nu_{3} \log (\frac{\nu_{3}}{w_{3}}) \\
     &+ (\nu_{12}+\nu_{123}) \log(\frac{\nu_{12}+\nu_{123}}{w_{12}+w{123}}) +
