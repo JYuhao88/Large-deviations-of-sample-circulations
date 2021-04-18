@@ -21,33 +21,15 @@
 \maketitle
 
 Here we adopt the presentation given by Kalpazatidou.
-Let $X=(X_n)_{n\ge 0}$ be a discrete-time Markov chain with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. \\
+Let $(\xi_l)_{l\ge 0}$ be a discrete-time Markov chain with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. \\
 
 \begin{definition}
     A circuit function in a finite set S is a periodic function c, which maps the set $\mathbf{Z}$ of integers to S.
 \end{definition}
 
-% \begin{definition}
-%     The two circuit function $c$ and $c'$ are equivalent if and only if it exists $k$ such that $c(n) = c'(n+k)$ for each $n \in \mathbf{Z}$, the smallest integer $k$ is the period of $c$. 
-% \end{definition}
-
 \begin{definition}
-    Let $\mathcal{C}_n(\omega)$ be the class of all cycles occurring along the sample path $\{\xi_l(\omega)\}$
+    Let $\mathcal{C}_n(\omega)$ be the class of cycles occurring along the sample path $(\xi_l)_{l\ge 0}$ until time $n$. Then we use $\mathcal{C}_{\infty}$ to represent the limit of $\mathcal{C}_n$ as $n \rightarrow \infty$. This convergence has been proofed in [].
 \end{definition}
-
-% \begin{definition}
-%     $\Omega_n = \mathcal{S}^{n} = \left\{\omega = (\omega_{n+1}):  \omega_{n+1} = \omega_1 \right\}, n \in Z^+$
-%     is $n$ step orbit space, and start from $\omega_1$, along this trajectory, pass $n$ step, can return to $\omega_1$.
-% \end{definition}
-
-% \begin{definition}
-%     Let
-%     $$
-%     K_n = \left\{\omega \in \Omega_n : w_{c, n}(\omega) = k^c \right\} 
-%     $$
-%     denote the orbit space given the number of each circuit, and the orbit length is $n$. And let $|K_n|$ denote the size of $|K_n|$.
-%     $h^i = \sum_{J_c(i)=1} k^c$
-% \end{definition}
 
 \begin{definition} %% follow Jia2016
     Let $N_n^c$ denote the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_n^c$ along cycle $c$ by time $t$ is defined as
@@ -61,19 +43,46 @@ Let $X=(X_n)_{n\ge 0}$ be a discrete-time Markov chain with finite state space S
     which represents the number of times that cycle $c$ ic formed per unit time.
 \end{definition}
 
-\begin{lemma}
-    \begin{align*}
-        \mathbb{P}(J^c = \nu_c, \forall c \in \mathcal{C}_n(\omega)) = - \min I(\nu)
-    \end{align*}
-    where 
-\end{lemma}
+\begin{definition}
+    Let $\{\mu_n: n \in N^*\}$ be a family of probability measures on a Polish
+    space $E$. Then we say that $\{\mu_n: n \in N^*\}$ satisfies a large deviation principle with rate $n$ and good rate function $I: E \rightarrow [0, \infty]$ if: 
 
-\section{Large deviation of circulation for two state Markov chains}
+    (i) for each $\alpha >0$, the level set $\{x\in E: I(x)<\alpha\}$ is compact in $E$;
+
+    (ii) for each closed subset $F$ of $E$,
+    \begin{align}
+        \limsup_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(F) \leq -\inf_{x\in F} I(x);
+    \end{align}
+
+    (iii) for each open subset $U$ of E,
+    \begin{align}
+        \liminf_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(U) \geq -\inf_{x\in U} I(x);
+    \end{align}
+\end{definition}
+
+\section{Large deviation of circulation for finite Markov chains}
+We consider the following n-step($n\ge 2$) enzyme kinetics model:
+$$
+E + S \rightleftharpoons
+ES \rightleftharpoons
+EP_1 \rightleftharpoons
+EP_2 \rightleftharpoons
+\cdots
+EP_{n-2} \rightleftharpoons
+E + P
+$$
+where E is an enzyme turning the substrate S into the product P. From the  perspective of a single enzyme molecule, this enzyme kinetics can be modeled as n-step Markov chain $(\xi_l)_{l\ge 0}$, with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. If $n=2$, then this Markov chain only have two state $E$ and $ES$. 
+
+\begin{theorem}
+    
+\end{theorem}
+
+\subsection{Large deviation of circulation for two state Markov chains}
 \begin{align*}
     I(\nu) &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) + \nu_{2}\log(\frac{w_{2}}{w_{1}+w_{12}}) + 2\nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
 \end{align*}
 
-\section{Large deviation of circulation for three state Markov chains}
+\subsection{Large deviation of circulation for three state Markov chains}
 \begin{align*}
     I(\nu) 
     &= \sum_{i \in I} \left(-\nu^{i} \log \frac{\nu^{i}}{w^{i}} + (\nu^{i} - \nu_{i}) \log(\nu^{i} - \nu_{i})\right) \\
@@ -95,11 +104,6 @@ And $\nu^{i} = \sum_{J_{c_s}(i)=1} \nu_{c_s}$, such as $\nu^{1} = \nu_{1} + \nu_
 $\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$。\\
 $w^i$, $w_i$ has the similar definition.
 
-\section{Large deviation of circulation for multi-state Markov chains}
-
-% \begin{thebibliography}{99}
-%     \bibitem{mla}
-%     KALPAZIDOU, S. L. (1995). "Cycle Representations of Markov Processes" Springer, New York. MR1336140
-% \end{thebibliography}
+\subsection{Large deviation of circulation for multi-state Markov chains}
 
 \end{document}
