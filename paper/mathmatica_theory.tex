@@ -19,63 +19,72 @@
 \begin{document}
 
 \maketitle
+We consider the following n-step($n\ge 2$) enzyme kinetics model:
+\begin{align} \label{eq:model}
+    E + S \rightleftharpoons
+    ES \rightleftharpoons
+    EP_1 \rightleftharpoons
+    EP_2 \rightleftharpoons
+    \cdots
+    EP_{n-2} \rightleftharpoons
+    E + P
+\end{align}
 
-Here we adopt the presentation given by Kalpazatidou.
-Let $(\xi_l)_{l\ge 0}$ be a discrete-time Markov chain with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. \\
+where E is an enzyme turning the substrate S into the product P. From the  perspective of a single enzyme molecule, this enzyme kinetics can be modeled as n-step Markov chain $(\xi_l)_{l\ge 0}$, with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. 
+
+If $n=2$, then this Markov chain only have two state $E$ and $ES$, and we can say the state space $S=\{1, 2\}$, which represent $\{E, ES\}$.
 
 \begin{definition}
-    A circuit function in a finite set S is a periodic function c, which maps the set $\mathbf{Z}$ of integers to S.
+    Let $\mathbb{Z}$ be the set of integers, and a periodic function $f$ which maps $\mathbb{Z}$ to S is called circuit function. If $s$ is the smallest positive integer which satisfied $f(n+s) = f(n)$ for each $n \in \mathbb{Z}$, then we called it the period of $f$.
 \end{definition}
+
+\begin{definition}
+    Two circuit functions $f$ and $g$ in S are called equivalent if there exists some $m \in \mathbb{Z}$ such that $g(n) = f(n+m)$ for each $n \in \mathbb{Z}$.
+\end{definition}
+
+
+According to the above definition, we know $(1, 2, 3), (3, 1, 2)$ and $(2, 3, 1)$ represent the same cycle. So a cycle is also a equivalence class on the space of all
+circuit function under the equivalence relation.
 
 \begin{definition}
     Let $\mathcal{C}_n(\omega)$ be the class of cycles occurring along the sample path $(\xi_l)_{l\ge 0}$ until time $n$. Then we use $\mathcal{C}_{\infty}$ to represent the limit of $\mathcal{C}_n$ as $n \rightarrow \infty$. This convergence has been proofed in [].
 \end{definition}
 
+
+
 \begin{definition} %% follow Jia2016
-    Let $N_n^c$ denote the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_n^c$ along cycle $c$ by time $t$ is defined as
+    Let $k_{c, n}$ denote the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_{c, n}$ along cycle $c$ by time $t$ is defined as
     $$
-    J_n^c = \frac{1}{n} N_n^c
+    w_{c, n} = \frac{1}{n} k_{c, n}
     $$
     and the circulation $J^c$ along cycle $c$ is a nonnegative real number defined as the following almost sure limit:
     $$
-    J^c = \lim_{n \rightarrow \infty} J_n^c, \quad a.s.
+    w_c = \lim_{n \rightarrow \infty} w_{c, n}, \quad a.s.
     $$
     which represents the number of times that cycle $c$ ic formed per unit time.
 \end{definition}
 
+
+Consider the enzyme kinetics model, if the state space $S=\{1, 2, \dots, n\}$, then $\mathcal{C}_{\infty}$ contains  folloing $2n+2$ cycles. 
+\begin{itemize}
+    \item $n$ simple cycles
+    \item $n$ two-state cycles
+    \item two n-state cycles
+\end{itemize}
+Let $|c|$ denotes the length of cycle $c$, and $\nu_c$ is the frequency of cycle $c$ occuring, then $\nu_c \in [0, 1/|c|]$. 
+% For example, consider the cycle $c=\{2, 3, 4\}$, then $|c|=3$, and $\nu_c \in [0, \frac{1}{3}]$
 \begin{definition}
-    Let $\{\mu_n: n \in N^*\}$ be a family of probability measures on a Polish
-    space $E$. Then we say that $\{\mu_n: n \in N^*\}$ satisfies a large deviation principle with rate $n$ and good rate function $I: E \rightarrow [0, \infty]$ if: 
-
-    (i) for each $\alpha >0$, the level set $\{x\in E: I(x)<\alpha\}$ is compact in $E$;
-
-    (ii) for each closed subset $F$ of $E$,
+    We say the law of $(w_{c_1}, w_{c_2}, \dots, w_{c_r})$ satisfies a large deviation principle if:
     \begin{align}
-        \limsup_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(F) \leq -\inf_{x\in F} I(x);
+        \lim_{n \rightarrow \infty} \frac{1}{n} \log \mathbb{P}(w_{c, n} = \nu_c, c \in \mathcal{C}_{\infty}) = - \min_{\nu} I(\nu)
     \end{align}
-
-    (iii) for each open subset $U$ of E,
-    \begin{align}
-        \liminf_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(U) \geq -\inf_{x\in U} I(x);
-    \end{align}
+    where $|c| \nu_c = 1$, I: $\Pi_{c} [0, \frac{1}{|c|}] \rightarrow [0, \infty]$.
 \end{definition}
 
-\section{Large deviation of circulation for finite Markov chains}
-We consider the following n-step($n\ge 2$) enzyme kinetics model:
-$$
-E + S \rightleftharpoons
-ES \rightleftharpoons
-EP_1 \rightleftharpoons
-EP_2 \rightleftharpoons
-\cdots
-EP_{n-2} \rightleftharpoons
-E + P
-$$
-where E is an enzyme turning the substrate S into the product P. From the  perspective of a single enzyme molecule, this enzyme kinetics can be modeled as n-step Markov chain $(\xi_l)_{l\ge 0}$, with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. If $n=2$, then this Markov chain only have two state $E$ and $ES$. 
 
-\begin{theorem}
-    
-\end{theorem}
+
+\section{Large deviation of circulation for finite Markov chains}
+
 
 \subsection{Large deviation of circulation for two state Markov chains}
 \begin{align*}
@@ -106,4 +115,17 @@ $w^i$, $w_i$ has the similar definition.
 
 \subsection{Large deviation of circulation for multi-state Markov chains}
 
+
+
+\section{Appendix}
+Consider the first n-step of the above Markov chains $(\xi_l)$, we assume that $\xi_{n}=\xi_1$, and number of the cycle $c_i$ occurring is $k_{c_i}$ for each $c_i \in \mathcal{C}_{\infty}$. 
+If mark each occurence of $(s, t)$ in $\xi_1, \dots, \xi_n$ by drawing an arrow from $s$ to $t$, we can obtain an oriented graph $G(k)$, and use $\mathcal{E} (G(k))$ to denote the number of Euler circuits on $G(k)$.
+\begin{theorem}
+    For the graph $G(k)$ induced by the Markov chains $(\xi_l)_{l\ge 0}$, if the size of state space is $s$, then we have the following formula:
+    \begin{equation*}
+        \mathcal{E} (G(k)) = 
+        \binom{k_{12}+k_{14}+k_{+}+k_{-}}{k_{12}, k_{14}, k_{+}, k_{-}} \\
+        
+    \end{equation*}
+\end{theorem}
 \end{document}
