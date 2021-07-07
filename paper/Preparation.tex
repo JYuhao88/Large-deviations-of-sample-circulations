@@ -18,6 +18,10 @@
 \begin{document}
 
 \maketitle
+
+Here we adopt the presentation given by Kalpazatidou.
+Let $(\xi_l)_{l\ge 0}$ be a discrete-time Markov chain with finite state space S defined on some space $(\Omega, \mathcal{F}, P)$. \\
+
 % \begin{definition}
 %     The two circuit function $c$ and $c'$ are equivalent if and only if it exists $k$ such that $c(n) = c'(n+k)$ for each $n \in \mathbf{Z}$, the smallest integer $k$ is the period of $c$. 
 % \end{definition}
@@ -42,5 +46,21 @@
 %     KALPAZIDOU, S. L. (1995). "Cycle Representations of Markov Processes" Springer, New York. MR1336140
 % \end{thebibliography}
 
+\begin{definition}
+    Let $\{\mu_n: n \in N^*\}$ be a family of probability measures on a Polish
+    space $E$. Then we say that $\{\mu_n: n \in N^*\}$ satisfies a large deviation principle with rate $n$ and good rate function $I: E \rightarrow [0, \infty]$ if: 
+
+    (i) for each $\alpha >0$, the level set $\{x\in E: I(x)<\alpha\}$ is compact in $E$;
+
+    (ii) for each closed subset $F$ of $E$,
+    \begin{align}
+        \limsup_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(F) \leq -\inf_{x\in F} I(x);
+    \end{align}
+
+    (iii) for each open subset $U$ of E,
+    \begin{align}
+        \liminf_{n \rightarrow \infty} \frac{1}{n} \log \mu_n(U) \geq -\inf_{x\in U} I(x);
+    \end{align}
+\end{definition}
 
 \end{document}
