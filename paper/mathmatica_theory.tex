@@ -107,18 +107,18 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{theorem}
 \begin{proof}
     For the n-step path, after counting all the cycles, it maybe remain some points which haven't form cycles, we call this chain the derived chains.
-    Refer to the Appendix, $\mathcal{E} (G^3(k))$ represents the amount of path with $k$ cycle occuring, and $\Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}} $ is the probability of the part formed all cycles. Obviously, the length of the derived chains is no more than 2 (the amount of states is three), then
+    Refer to the Appendix, $\mathcal{E} (G^3(k))$ represents the amount of path with $k$ cycle occuring, and $\Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} $ is the probability of the part formed all cycles. Obviously, the length of the derived chains is no more than 2 (the amount of states is three), then
     $\min_{\{i, j\}} p_{ij}^{2}$, $\max_{\{i, j\}} p_{ij}^2$ are the lower and upper bound respectively. So
     \begin{align*}
         \mathbb{P}(J_{n}^c= \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
-        \ge \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}
+        \ge \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
         \min_{\{i, j\}} p_{ij}^{2}
     \end{align*}
     The length of the derived chains is no more than 2. And the steps in the derived chains is included in the n steps, so
     \begin{align*}
         \mathbb{P}(J_{n}^c = \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
         \le \binom{n}{2}
-        \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}
+        \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
         \max_{\{i, j\}} p_{ij}^2
     \end{align*}
 
@@ -131,7 +131,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     \begin{align*}
         \mathbb{P}(J_{n}^c = \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
         = \exp(O (\log n))
-        \mathcal{E} (G(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}
+        \mathcal{E} (G(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
     \end{align*}
     We could neglect the influence of the derived chains.
 
@@ -144,7 +144,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     For $\forall k \in K_n$, let $\mu_n(k) = \frac{1}{n} k \in E$. Let us put
     \begin{align*}
         Q_n(a) = \max_{k\in K_n: \mu_n(k) \in B_a(\nu)} 
-        \mathcal{E} (G(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}
+        \mathcal{E} (G(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
     \end{align*}
     where $B_a(\nu)$ is the open neighborhood of $\nu$ with the total vaiation distance
     $ d(\alpha, \beta) = \frac{1}{2} \sum_{s=1}^r |\alpha_s - \beta_s| $ and radius $a$. 
@@ -160,7 +160,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     where $h(x)=x\log(x)$. We find that
 
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= h(\nu_{12} + \nu_{13} + \nu_{23}+\nu_{123}+\nu_{132}) 
         + h(\nu_1 + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}) \\
         &+ h(\nu_2 + \nu_{12} + \nu_{123} + \nu_{132} +\nu_{23})
@@ -173,7 +173,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 
     Merging all the same items, then
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= -\biggl(
         \nu_1 \log(\frac{1}{p_{1}} \frac{\nu_1}{\nu^1})
         + \nu_2 \log(\frac{1}{p_{2}} \frac{\nu_2}{\nu^2})
@@ -207,9 +207,9 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         w_{12}+w_{13}+w_{23}+w_{123}+w_{132} &= \frac{(1-p_{11})(1-p_{22})(1-p_{33})}{\sum_{i\in I} D(\{i\}^c)} \\
         &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in I} D(\{i\}^c)}
     \end{align*}
-    Since the property of circulation, $p_{ij} = \frac{\sum_{c \ni (i,j)} w_c}{\sum_{c \ni (i)} w_c}$, So
+    Since the property of circulation, $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, So
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni (i,j)} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
         &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \\
         &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i})
@@ -279,13 +279,13 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         &+ [h(\nu^-_{m-1,m} +\nu^-_{m-2,m-1} +\nu^-) -h(\nu^-_{m-2,m-1}) -h(\nu^-_{m-1,m} +\nu^-)]\\
         &+ \dots +
         + h(\nu^-_{23}+\nu^-_{34}+\nu^-) - h(\nu^-_{23} -h(\nu^-_{34}+\nu^-))\biggr\}
-        + \sum_{i,j} (\sum_{c \ni (i,j)}\nu_c) \log p_{ij}
+        + \sum_{i,j} (\sum_{c \ni [i,j]}\nu_c) \log p_{ij}
     \end{align*}
 \end{theorem}
 \begin{proof}
     If the rate function exists, we know:
     \begin{align*}
-        I_m^c(\nu) = \frac{1}{n} \log \mathcal{E} (G^m(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}.
+        I_m^c(\nu) = \frac{1}{n} \log \mathcal{E} (G^m(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}.
     \end{align*}
     The accumulation part in $\mathcal{E} (G^m(k))$ has no more than $n^{m-1}$ items, and $\frac{1}{n} \log n^{m-1} = O(\frac{\log n}{n})$. The other technology for simplification has been mentioned in  Theorem 1.1 many times.
 \end{proof}
@@ -300,17 +300,17 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     % \begin{align}
     %     I_{n}^{c'}(\nu) 
     %     % &= \sum_{i, j \in S} \nu_c
-    %     % \log \left(\frac{\sum_{c \ni (i,j)} \nu_c}{\nu^i}/ \frac{\sum_{c \ni (i,j)} w_c }{w^i}
+    %     % \log \left(\frac{\sum_{c \ni [i,j]} \nu_c}{\nu^i}/ \frac{\sum_{c \ni [i,j]} w_c }{w^i}
     %     % \right) \\
     %     &= \sum_{i\in S} \nu_i \log \left(\frac{\nu_i}{\nu^i} / \frac{w_i}{w^i}\right)
-    %     + \sum_{i,j \in S, i<j} \nu_{i,j} \log \left(\frac{\sum_{c \ni (i,j)} \nu_c}{\nu^i}
-    %     /\frac{\sum_{c \ni (i,j)} w_c}{w^i}\right)
+    %     + \sum_{i,j \in S, i<j} \nu_{i,j} \log \left(\frac{\sum_{c \ni [i,j]} \nu_c}{\nu^i}
+    %     /\frac{\sum_{c \ni [i,j]} w_c}{w^i}\right)
     %     \left(\frac{\sum_{c \ni (j,i)} \nu_c}{\nu^i}
     %     /\frac{\sum_{c \ni (j,i)} w_c}{w^i}\right) \\
-    %     &+ \nu_{12\cdots m} \sum_{i\in S} \log \left(\frac{\sum_{c \ni i} \nu_c}{\nu^i}/ \frac{\sum_{c \ni i} w_c}{w^i}\right)
+    %     &+ \nu_{12\cdots m} \sum_{i\in S} \log \left(\frac{\sum_{c \ni [i]} \nu_c}{\nu^i}/ \frac{\sum_{c \ni [i]} w_c}{w^i}\right)
     % \end{align}
     \begin{align*}
-        I_{m'}^{c}(\nu) = \sum_{i \in S} \sum_{c \ni i} \nu_c \log \left(\frac{\nu_c}{\nu^i} /\frac{w_c}{w^i}\right)
+        I_{m'}^{c}(\nu) = \sum_{i \in S} \sum_{c \ni [i]} \nu_c \log \left(\frac{\nu_c}{\nu^i} /\frac{w_c}{w^i}\right)
     \end{align*}
 \end{theorem}
 \begin{proof}
@@ -322,11 +322,11 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     and
     \begin{align*}
         Q_n(a) = \max_{k\in K_n: \mu_n(k) \in B_a(\nu)} 
-        \mathcal{E} (G^{m'} (k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}}.
+        \mathcal{E} (G^{m'} (k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}.
     \end{align*}
     We only need to simply the following formula.
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^{m'} (k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni (i,j)} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^{m'} (k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= -\biggl(
         \sum_{i \in S} \nu_i \log(\frac{1}{p_{i}} \frac{\nu_i}{\nu^i})
         +\nu_{12} \log \frac{1}{p_{12}p_{21}} \frac{\nu_{12}}{\nu_{12}+\nu_{23}+\nu_{12\dots m}} \frac{\nu^1-\nu_1}{\nu^1} \frac{\nu^2 -\nu_2}{\nu^2} \\
@@ -349,7 +349,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         \nu_{1, 2, \dots m} \frac{\Pi_{i=1}^{m-1} (\nu_{i, i+1} + \nu_{1, 2, \dots m})}{\Pi_{i=1}^m \nu^{i}}
         \biggr) \\
     \end{align*}
-    Because $p_{ij} = \frac{\sum_{c \ni (i,j)} w_c}{\sum_{c \ni (i)} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
+    Because $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
 \end{proof}
 \begin{corollary}
     $I_{n'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex
@@ -368,7 +368,7 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
         \mathcal{E}_1 (G^m(k)) &= 
         \binom{k_{12}+k_{1m}+k^{+}+k^{-}}{k_{12}, k_{1m}, k^{+}, k^{-}} 
         \binom{k_{1}+k_{12}+k_{1m}+k^{+}+k^{-}}{k_{12}+k_{1m}+k^{+}+k^{-}}
-        \biggl[\Pi_{i\in S, i\neq 1} \binom{\sum_{c \ni i} k_{c} - 1}{\sum_{c \ni i} k_{c} - k_{i} - 1}\biggr]\\
+        \biggl[\Pi_{i\in S, i\neq 1} \binom{\sum_{c \ni [i]} k_{c} - 1}{\sum_{c \ni [i]} k_{c} - k_{i} - 1}\biggr]\\
         &\biggl[\sum_{k_{23}^{+}+k_{23}^{-}=k_{23}} \sum_{k_{34}^{+}+k_{34}^{-}=k_{34}}
         \dots \sum_{k_{m-1,m}^{+}+k_{m-1,m}^{-}=k_{m-1,m}}
         \binom{k_{23}^{+}+k_{12}+k^{+}-1}{k_{23}^{+}} \binom{k_{34}^{+}+k_{23}^{+}+k^{+}-1}{k_{34}^{+}} \\
@@ -407,7 +407,7 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
 
     3. Consider the one of the  above permutation, we insert the other 1-state cycles into it, i.e. $(2)$, $(3)$, \dots, $(s)$.  The number of permutations is:
     \begin{align*}
-        \Pi_{i\in S, i\neq 1} \binom{\sum_{c \ni i} k_{c} - 1}{\sum_{c \ni i} k_{c} - k_{i} - 1}
+        \Pi_{i\in S, i\neq 1} \binom{\sum_{c \ni [i]} k_{c} - 1}{\sum_{c \ni [i]} k_{c} - k_{i} - 1}
     \end{align*}
 \end{proof}
 
