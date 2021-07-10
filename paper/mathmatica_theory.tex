@@ -238,28 +238,33 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \begin{corollary}
     For 3-state Markov chains, $\bar{J}_n = J^{123}_n - J^{132}_n$ satisfies the net circulation large deviation.
     \begin{equation*} \label{eq:net}
-        \lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) = - \bar{I}(\bar{\nu})
+        \lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) = - \bar{I^c_3}(\bar{\nu})
     \end{equation*}
     and
     \begin{align*}
-        \bar{I}(\bar{\nu}) = \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
+        \bar{I^c_3}(\bar{\nu}) = \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
     \end{align*}
     where net cycle frequence $\bar{\nu} = \nu_{123} - \nu{132}$, in that $(1,3,2)$ is the anti cycle of $(1,3,2)$, and $\bar{\nu}$ belongs the space
     $\bar{E}(\bar{\nu}) = \{\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E | \nu_1 +\nu_2 +\nu_3 +2(\nu_{12} +\nu_{13} +\nu_{23}) +3(2\nu_{132} +\bar{\nu})=1\}$
 \end{corollary}
 \begin{proof}
-    According to the contraction principle, we know ~\ref{eq:net} exists.
-    Define the space based on $K_n$,
+    % According to the contraction principle, we know ~\ref{eq:net} exists.
+    % Define the space based on $K_n$,
+    % \begin{align*}
+    %     \bar{K}_n = \{k = (k_c)_{c \in \mathcal{C}_{\infty}} \in K_n| k_1 + k_2 +k_3 +2(k_{12} +k_{13} +k_{23}) +3(2k_{132} +\bar{k})=1\}
+    % \end{align*}
+    % and the size of $\bar{K}_n$ is no more than $n^r$.
+    % \begin{align*}
+    %     &\lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) \\
+    %     &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \sum_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+    %     &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \max_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+    %     &= - \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
+    % \end{align*}
+    Let $f(\nu) = \nu^{123} - \nu^{132}$, so $f: E \rightarrow [-\frac{1}{3}, \frac{1}{3}]$ is a continuous function. Let
     \begin{align*}
-        \bar{K}_n = \{k = (k_c)_{c \in \mathcal{C}_{\infty}} \in K_n| k_1 + k_2 +k_3 +2(k_{12} +k_{13} +k_{23}) +3(2k_{132} +\bar{k})=1\}
+        \bar{I^c_3}(\bar{\mu}) = \inf \{I^c_3(\nu): \nu \in E, \mu = f(\nu)\}
     \end{align*}
-    and the size of $\bar{K}_n$ is no more than $n^r$.
-    \begin{align*}
-        &\lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) \\
-        &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \sum_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
-        &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \max_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
-        &= - \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
-    \end{align*}
+    According to contraction principle, $\bar{I^c_3}(\bar{\mu})$ is also a good rate function on $f(E)$.
 \end{proof}
 
 \begin{corollary}
@@ -275,10 +280,23 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 
 \begin{corollary}
     $I_3^c$ satisfies fluctuation theorem, for $\nu, \mu \in E$, if $\nu_{123} = \mu_{132}$ , $\nu_{132} = \mu_{123}$ and $\nu_c = \mu_c$ for $c \notin \{(1,2,3), (1,3,2)\}$ the following formula holds:
+    \begin{equation} \label{eq:fluctuation}
+        I_3^c(\nu) = I_3^c(\mu) - (\nu_{123} - \nu_{132}) \log \frac{\gamma^{123}}{\gamma^{132}}
+    \end{equation}
+    $\gamma^c = p_{i_1 i_2} p_{i_2 i_3} \cdots p_{i_s i_1}$ is the strength of cycle $c=(i_1, i_2, \dots i_s)$.
+\end{corollary}
+\begin{proof}
+    With the expression of $I_3^c$, we know
     \begin{align*}
         I_3^c(\nu) = I_3^c(\mu) - (\nu_{123} - \nu_{132}) \log \frac{w_{123}}{w_{132}}
     \end{align*}
-\end{corollary}
+    and
+    \begin{align*}
+        &w_{123} = \frac{p_{12} p_{23} p_{31}}{\sum_{j\in S} D(\{j\}^c)} \\
+        &w_{132} = \frac{p_{13} p_{32} p_{21}}{\sum_{j\in S} D(\{j\}^c)}
+    \end{align*}
+    ~\ref{eq:fluctuation} can be obtained.
+\end{proof}
 
 \begin{corollary}
     $I_3^c$ is  finite, continuous, positive and strictly convex.
