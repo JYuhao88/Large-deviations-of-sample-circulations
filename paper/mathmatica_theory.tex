@@ -94,14 +94,14 @@ $E = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \mathca
 For the three-state Markov chains, let $S = \{1, 2, 3\}$, $J_{n}$ satisfies a large deviation principle, and its rate function is
 \begin{align}
     I_3^c(\nu) &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
-    &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in I}w_i}) \\
+    &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \\
     &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i})
 \end{align}
 where $S=\{1, 2, 3\}$ is the state space for Markov chains。
 $$\mathcal{C}_{\infty}^3 = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1,3,2)\}$$
 is the class of all cycles occurring.
 $\nu_c$ is the frequence of cycle $c$ occurring, $w_c$ is the cycle skipping rate on $c$.\\
-Let $\nu^{i} = \sum_{c \supseteq (i)} \nu_{c}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$.
+Let $\nu^{i} = \sum_{c \supseteq [i]} \nu_{c}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$.
 Let  $\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$ represent the sum of all the elements of $\nu$. 
 And $w^i$, $w_i$ is similarly defined for $w$.
 \end{theorem}
@@ -173,7 +173,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 
     Merging all the same items, then
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= -\biggl(
         \nu_1 \log(\frac{1}{p_{1}} \frac{\nu_1}{\nu^1})
         + \nu_2 \log(\frac{1}{p_{2}} \frac{\nu_2}{\nu^2})
@@ -210,9 +210,9 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     Since the property of circulation, $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, So
     \begin{align*}
         &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
-        &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
+        &= -\bigl(\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
         &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \\
-        &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i})
+        &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i}) \bigr)
     \end{align*}
     Now we find that
     \begin{align*}
@@ -236,14 +236,52 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{proof}
 
 \begin{corollary}
+    For 3-state Markov chains, $\bar{J}_n = J^{123}_n - J^{132}_n$ satisfies the net circulation large deviation.
+    \begin{equation*} \label{eq:net}
+        \lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) = - \bar{I}(\bar{\nu})
+    \end{equation*}
+    and
+    \begin{align*}
+        \bar{I}(\bar{\nu}) = \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
+    \end{align*}
+    where net cycle frequence $\bar{\nu} = \nu_{123} - \nu{132}$, in that $(1,3,2)$ is the anti cycle of $(1,3,2)$, and $\bar{\nu}$ belongs the space
+    $\bar{E}(\bar{\nu}) = \{\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E | \nu_1 +\nu_2 +\nu_3 +2(\nu_{12} +\nu_{13} +\nu_{23}) +3(2\nu_{132} +\bar{\nu})=1\}$
+\end{corollary}
+\begin{proof}
+    According to the contraction principle, we know ~\ref{eq:net} exists.
+    Define the space based on $K_n$,
+    \begin{align*}
+        \bar{K}_n = \{k = (k_c)_{c \in \mathcal{C}_{\infty}} \in K_n| k_1 + k_2 +k_3 +2(k_{12} +k_{13} +k_{23}) +3(2k_{132} +\bar{k})=1\}
+    \end{align*}
+    and the size of $\bar{K}_n$ is no more than $n^r$.
+    \begin{align*}
+        &\lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(\bar{J}_n = \bar{\nu}) \\
+        &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \sum_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+        &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \max_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+        &= - \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
     For the two-state Markov chains, we have:
     \begin{align*}
-    I_2^c(\nu) &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) + \nu_{2}\log(\frac{w_{2}}{w_{1}+w_{12}}) + 2\nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
+    I_2^c(\nu) 
+    &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) 
+    + \nu_{2} \log(\frac{\nu_{2}}{\nu_{2}+\nu_{12}}/\frac{w_{2}}{w_{1}+w_{12}}) \\
+    &+ \nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
+    + \nu_{12} \log (\frac{\nu_{12}}{\nu_{2}+\nu_{12}}/\frac{w_{12}}{w_{2}+w_{12}})
 \end{align*}
 \end{corollary}
 
 \begin{corollary}
-    $I_3^c$ is  finite, continuous, positive and strictly convex
+    $I_3^c$ satisfies fluctuation theorem, for $\nu, \mu \in E$, if $\nu_{123} = \mu_{132}$ , $\nu_{132} = \mu_{123}$ and $\nu_c = \mu_c$ for $c \notin \{(1,2,3), (1,3,2)\}$ the following formula holds:
+    \begin{align*}
+        I_3^c(\nu) = I_3^c(\mu) - (\nu_{123} - \nu_{132}) \log \frac{w_{123}}{w_{132}}
+    \end{align*}
+\end{corollary}
+
+\begin{corollary}
+    $I_3^c$ is  finite, continuous, positive and strictly convex.
 \end{corollary}
 \begin{proof}
     Since $h(x) = x \log x$ is finite on the interval $[0, 1]$, obviously, $I^c_3(\nu)$ is finite on $E$.
@@ -284,7 +322,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         &+ [h(\nu_{1m}+ \nu^{-}_{m-1,m}+ \nu^-) -h(\nu^-_{m-1,m}) -h(\nu_{1m}+\nu^-)]\\
         &+ [h(\nu^-_{m-1,m} +\nu^-_{m-2,m-1} +\nu^-) -h(\nu^-_{m-2,m-1}) -h(\nu^-_{m-1,m} +\nu^-)]\\
         &+ \dots +
-        + h(\nu^-_{23}+\nu^-_{34}+\nu^-) - h(\nu^-_{23} -h(\nu^-_{34}+\nu^-))\biggr\}
+        + h(\nu^-_{23}+\nu^-_{34}+\nu^-) - h(\nu^-_{23}) -h(\nu^-_{34}+\nu^-)\biggr\}
         + \sum_{i,j} (\sum_{c \ni [i,j]}\nu_c) \log p_{ij}
     \end{align*}
 \end{theorem}
@@ -293,7 +331,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     \begin{align*}
         I_m^c(\nu) = \frac{1}{n} \log \mathcal{E} (G^m(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}.
     \end{align*}
-    The accumulation part in $\mathcal{E} (G^m(k))$ has no more than $n^{m-1}$ items, and $\frac{1}{n} \log n^{m-1} = O(\frac{\log n}{n})$. The other technology for simplification has been mentioned in  Theorem 1.1 many times.
+    The accumulation part in $\mathcal{E} (G^m(k))$ has no more than $n^{m-1}$ items, and $\frac{1}{n} \log n^{m-1} = O(\frac{\log n}{n})$. The other means for simplification has been mentioned in  Theorem 1.1 many times.
 \end{proof}
 
 \begin{figure}[h]
@@ -460,5 +498,5 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
     \end{align*}
 \end{corollary}
 
-\
+
 \end{document}
