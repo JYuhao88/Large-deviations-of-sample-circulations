@@ -278,12 +278,16 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{align*}
 \end{corollary}
 
-\begin{corollary}
-    $I_3^c$ satisfies fluctuation theorem, for $\nu, \mu \in E$, if $\nu_{123} = \mu_{132}$ , $\nu_{132} = \mu_{123}$ and $\nu_c = \mu_c$ for $c \notin \{(1,2,3), (1,3,2)\}$ the following formula holds:
+\begin{corollary} \label{}
+    $I_3^c$ satisfies the fluctuation theorem, for $\nu, \mu \in E$, if $\nu_{123} = \mu_{132}$ , $\nu_{132} = \mu_{123}$ and $\nu_c = \mu_c$ for $c \notin \{(1,2,3), (1,3,2)\}$ the following formula holds:
     \begin{equation} \label{eq:fluctuation}
         I_3^c(\nu) = I_3^c(\mu) - (\nu_{123} - \nu_{132}) \log \frac{\gamma^{123}}{\gamma^{132}}
     \end{equation}
-    $\gamma^c = p_{i_1 i_2} p_{i_2 i_3} \cdots p_{i_s i_1}$ is the strength of cycle $c=(i_1, i_2, \dots i_s)$.
+    and net circulation $\bar{I}_3^c$ also satisfies the fluctuation theorem
+    \begin{align*}
+        \bar{I}_3^c (\bar{\nu}) = \bar{I}_3^c(-\bar{\nu}) - \rho^{123} (\bar{\nu})
+    \end{align*}
+    where $\gamma^c = p_{i_1 i_2} p_{i_2 i_3} \cdots p_{i_s i_1}$ is the strength of cycle $c=(i_1, i_2, \dots i_s)$, and $\rho^{c} = \frac{\gamma^{c}}{\gamma^{c^-}} $, $c^-$ is the inverse cycle of $c$.
 \end{corollary}
 \begin{proof}
     With the expression of $I_3^c$, we know
@@ -296,6 +300,15 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         &w_{132} = \frac{p_{13} p_{32} p_{21}}{\sum_{j\in S} D(\{j\}^c)}
     \end{align*}
     ~\ref{eq:fluctuation} can be obtained.
+
+    Then, we have
+    \begin{align*}
+        \bar{I}_3^c (\bar{\nu}) 
+        &= \min_{\nu_{123} -\nu_{132}=\bar{\nu}} I_3^c(\nu) \\
+        &= \min_{\nu_{123} -\nu_{132}=\bar{\nu}} I_3^c(\mu) - (\nu_{123} - \nu_{132}) \log \frac{\gamma^{123}}{\gamma^{132}} \\
+        &=\bar{I}_3^c(-\bar{\nu}) - \rho^{123} \log (\bar{\nu})
+    \end{align*}
+    which gives the desired result.
 \end{proof}
 
 \begin{corollary}
