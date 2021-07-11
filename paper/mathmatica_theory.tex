@@ -312,11 +312,16 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{proof}
 
 \begin{corollary}
-    $I_3^c$ is  finite, continuous, positive and strictly convex.
+    $I_3^c$ is finite, continuous, positive and strictly convex on E, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_i/\nu^i = \mu_i/\mu^i, \forall i \in S$ and $\nu_c/(\tilde{\nu}-\sum_{i\in S} \nu_i) =\mu_c/(\tilde{\mu}-\sum_{i\in S} \nu_i), \forall c \in \mathcal{C}_{\infty}$. $I_3^c$ is also affine, i.e. $I_3^c(\alpha \nu) = \alpha I_3^c( \nu)$.
 \end{corollary}
 \begin{proof}
     Since $h(x) = x \log x$ is finite on the interval $[0, 1]$, obviously, $I^c_3(\nu)$ is finite on $E$.
-    Spliting item $\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c}$, and employ Log sum inequality.
+    Spliting the item $\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c}$, because
+    \begin{align*}
+        \nu_i + (\nu^i - \nu_i) &= \nu^i \\
+        \sum_{c\in \mathcal{C}_{\infty}, c\neq (i)} \nu_c &= \tilde{\nu} - \sum_{i\in S} \nu_i
+    \end{align*}
+    we employ Log sum inequality.
     \begin{align*}
         I^c_3(\nu) 
         &= \left(\sum_{i\in S} \nu_{i}\log \frac{\nu_{i}}{w_i} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
@@ -328,13 +333,31 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         - \sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} \\
         &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} 
         -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \right)\\ 
-        &= \left(\sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} 
+        &\ge \left(\sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i}  
         - \sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} \right)\\
         &+ \left( (\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) 
         -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \right)\\
         &\ge 0
     \end{align*}
+
     The convex can be proofed with the same way by Log sum inequality.
+    \begin{align*}
+        I^c_3(\nu)
+        &= \sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{\nu^i } + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{\nu^i}
+        - \nu^i \log \frac{w_i}{w^i} - \nu^i \log \frac{w^i - w_i}{w^i} \right)\\
+        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{\tilde{\nu} - \sum_{i\in S}\nu_i}
+        -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{ w_c}{\tilde{w} - \sum_{i\in S}w_i}) \right)
+    \end{align*}
+    Obviously, $I_3^c(\alpha \nu) = \alpha I_3^c( \nu)$, so $I_3^c$ is also affine.
+    The item 
+    % $\nu^i \log \frac{w_i}{w^i}$, $\nu^i \log \frac{w^i - w_i}{w^i}$ and $(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{ w_c}{\tilde{w} - \sum_{i\in S}w_i})$ 
+    involving $w$
+    is linear for $\nu$. For the remains, use log-sum inequality again, such as:
+    \begin{align*}
+        \lambda \nu_{i}\log \frac{\lambda \nu_{i}}{\lambda \nu^i}
+        + (1-\lambda) \mu_{i}\log \frac{(1-\lambda) \mu_{i}}{(1-\lambda) \mu^i}
+        \ge [\lambda \nu_{i} + (1-\lambda) \mu_{i}] \log \frac{\lambda \nu_{i}+ (1-\lambda) \mu_{i}}{\lambda \nu^i +(1-\lambda) \mu^i}
+    \end{align*}
 \end{proof}
 
 \subsection{Large deviation of circulation for  finite state Markov chains}
@@ -427,11 +450,15 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     Because $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
 \end{proof}
 \begin{corollary}
-    $I_{n'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex
+    $I_{m'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex on E, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_c/\nu^i = \mu_c/\mu^i, \forall c \ni i$. $I_{m'}^{c}(\nu)$ is also affine, i.e. $I_{m'}^{c}(\alpha \nu) = \alpha I_{m'}^{c}(\nu)$. convex. The proof can be obtained by completely imitating it for $I_{m'}^{c}(\nu)$.
 \end{corollary}
-\begin{proof}
-    The finiteness and continuity is obvious, and we also can employ Log-sum inequality to proof its positivity convexity.
-\end{proof}
+% \begin{proof}
+%     The finiteness and continuity is obvious, and we also can employ Log-sum inequality to proof its positivity convexity.
+%     \begin{align*}
+%         I_{m'}^{c}(\nu) &= \sum_{i \in S} \sum_{c \ni [i]} \nu_c \log \left(\frac{\nu_c}{w_c} /\frac{\nu^i}{w^i}\right) \\
+%         &= 
+%     \end{align*}
+% \end{proof}
 
 \section{Appendix}
 Consider the first n-step of the above Markov chains $(\xi_l)$, we assume that $\xi_{n}=\xi_1$, and the number of cycle $c$ occurring is $k_{c}$.
@@ -462,7 +489,7 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
     
     2. Next we need to insert the other 2-state cycles into it based on above permutation.
     For the cycle $(s-1, s)$, $s \in \{3, 4, \dots , m\}$, it firstly be inserted into the cycle $(1, 2, \dots, m)$ and $(s-2, s-1)$ which start from state $s-2$ if $s \neq 3$.
-    The cycle $(s-1, s)$ that has been inserted all states from state $s-1$, next we insert the remains that starts from state $s$, the optional cycles have $(1, s, m-1, \dots, 2)$ and $(s, s+1)$ which start from state $s+1$ if $s \neq m$. ~\ref{fig:insert1} illustrates the way to insert 2-state cycles.\\
+    The cycle $(s-1, s)$ that has been inserted all states from state $s-1$, next we insert the remains that starts from state $s$, the  alternative cycles have $(1, m-1,m-2, \dots, 2)$ and $(s, s+1)$ which start from state $s+1$ if $s \neq m$. ~\ref{fig:insert1} illustrates the way to insert 2-state cycles.\\
     If we change the order of inserting, the cycle would not occurr at the inserting point, such as ~\ref{fig:insert2}
     \begin{align*}
         &\sum_{k_{23}^{+}+k_{23}^{-}=k_{23}} \sum_{k_{34}^{+}+k_{34}^{-}=k_{34}}
@@ -471,15 +498,17 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
         &\dots \binom{k_{m-1, m}^{+}+ k^{+}_{m-2, m-1} + k^{+}  -1}{k_{m-1, m}^{+}} \binom{k_{1, m} + k_{m-1, m}^{-} + k^{-} -1}{k_{m-1, m}^{-}} \binom{k_{m-1, m}^{-} + k_{m-2, m-1}^{-} + k^{-} - 1}{k_{m-2, m-1}^{-}} \\
         &\dots \binom{k_{23}^{-} + k_{34}^{-} + k^{-} - 1}{k_{23}^{-}}
     \end{align*}
-    \begin{figure}[h] \label{fig:insert1} 
+    \begin{figure}[h]  
         \centering
         \includegraphics[scale=0.5]{insert1.png}
         \caption{Right Insertion}
-    \end{figure}
-    \begin{figure}[h] \label{fig:insert2} 
+        \label{fig:insert1}
+    \end{figure} 
+    \begin{figure}[h] 
         \centering
         \includegraphics[scale=0.5]{insert2.png}
         \caption{Wrong Insertion}
+        \label{fig:insert2} 
     \end{figure}
 
     3. Consider the one of the  above permutation, we insert the other 1-state cycles into it, i.e. $(2)$, $(3)$, \dots, $(s)$.  The number of permutations is:
