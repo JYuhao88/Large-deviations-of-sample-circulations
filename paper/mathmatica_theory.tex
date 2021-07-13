@@ -40,10 +40,11 @@ where $\bm{E}$ is an enzyme turning the substrate $\bm{S}$ into the product $\bm
     Two circuit functions $f$ and $g$ in S are called equivalent if there exists some $m \in \mathbb{Z}$ such that $g(n) = f(n+m)$ for $\forall n \in \mathbb{Z}$.
 \end{definition}
 \begin{definition}
-    For a circuit function $f$ in S with period $s$ that satisfies $f(1)=i_1$, $f(2)=i_2$, $f(3)=i_3$. The equivalence class that $f$ belongs is a cycle $c=(i_1, i_2, \dots i_s)$
+    For a circuit function $f$ in S with period $s$ that satisfies $f(1)=i_1$, $f(2)=i_2$, $f(3)=i_3$. The equivalence class that $f$ belongs is a cycle $c=(i_1, i_2, \dots i_s)$.
 \end{definition}
 
-According to above definitions, $c_1 = (1, 2, 3), c_2 = (3, 1, 2)$ and $c_3 = (2, 3, 1)$ represent the same cycle. So a cycle is also a equivalence class on the space of all circuit functions under the equivalence relation.
+Therefore, according to this definitions, $c_1 = (1, 2, 3), c_2 = (3, 1, 2)$ and $c_3 = (2, 3, 1)$ represent the same cycle. 
+% So a cycle is also a equivalence class on the space of all circuit functions under the equivalence relation.
 
 For presentation purposes, if the order sequence $i_1, i_2, \dots, i_s$ occurs in the cycle $c$ continuously, we denote that $[i_1, i_2, \dots, i_s] \in c$. Specially, if $[i_1] \in c$, the point $i_1$ occurrs in $c$, and $[i_1, i_2] \in c$ denotes the edge $i_1 i_2$ exists in the cycle $c$. 
 For the cycle $c_1 = (1,2)$, we use $k_{12}$ to denote the number of cycle $c_1$.
@@ -67,16 +68,16 @@ For the cycle $c_1 = (1,2)$, we use $k_{12}$ to denote the number of cycle $c_1$
 For the enzyme kinetics model, if the state space $S=\{1, 2, \dots, m\}$, then $\mathcal{C}_{\infty}$ has $2m+2$ cycles, including $n$ 1-state cycles, $n$ two-state cycles and two n-state cycles
 
 Let $|c|$ denotes the length of cycle $c$, and 
-$E = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \mathcal{C}_{\infty}} |c| \mu_c  = 1\}$, then the circulation distribution $w = (w_{c})_{c \in \mathcal{C}_{\infty}} \in E$.
+$E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \mathcal{C}_{\infty}} |c| \mu_c  = 1\}$ for m-state Markov chains, then the circulation distribution $w = (w_{c})_{c \in \mathcal{C}_{\infty}} \in E_m$.
 
 \begin{definition}
-    We say that $J_{n}^c$ satisfies a large deviation principle with rate $n$ and good rate function $I$ : $E \rightarrow [0, \infty]$ if:
+    For m-state Markov chains, we say that $J_{n}^c$ satisfies a large deviation principle with rate $n$ and good rate function $I$ : $E_m \rightarrow [0, \infty]$ if:
     \begin{align}
         \lim_{n \rightarrow \infty} \frac{1}{n} \log \mathbb{P}(J_{n}^c = \nu_c , c \in \mathcal{C}_{\infty}) = - I(\nu), \quad \forall \nu
     \end{align}
     where $\sum_{c \in \mathcal{C}_{\infty}} |c| \nu_c = 1$, 
     % $r$ is the size of set $\mathcal{C}_{\infty}$,
-    and $\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E$.
+    and $\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E_m$.
 \end{definition}
 
 
@@ -92,23 +93,30 @@ $E = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \mathca
     \end{figure}
 
 For the three-state Markov chains, let $S = \{1, 2, 3\}$, $J_{n}$ satisfies a large deviation principle, and its rate function is
-\begin{align}
-    I_3^c(\nu) &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
-    &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \\
-    &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i})
-\end{align}
+% \begin{align*}
+%     I_3^c(\nu) &= \sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
+%     &-\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} } \\
+%     &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i})
+% \end{align*}
+\begin{align*}
+    I_3^c(\nu) &=
+    \sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{w_i} + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
+    - \nu^i \log \frac{\nu^i}{w^i} \right)
+    + \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} \right)
+    -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} }
+\end{align*}
 where $S=\{1, 2, 3\}$ is the state space for Markov chains。
 $$\mathcal{C}_{\infty}^3 = \{(1), (2), (3), (1,2), (2,3), (1,3), (1,2,3), (1,3,2)\}$$
 is the class of all cycles occurring.
 $\nu_c$ is the frequence of cycle $c$ occurring, $w_c$ is the cycle skipping rate on $c$.\\
 Let $\nu^{i} = \sum_{c \supseteq [i]} \nu_{c}$, such as $\nu^{1} = \nu_{1} + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}$.
-Let  $\tilde{\nu} = \nu_{1} + \nu_{2} + \nu_{3} + \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}$ represent the sum of all the elements of $\nu$. 
+Let  $\tilde{\nu} = \nu_{12} + \nu_{13} + \nu_{23} + \nu_{123} +\nu_{132}=\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c}$ represent the sum of all the elements of $\nu$. 
 And $w^i$, $w_i$ is similarly defined for $w$.
 \end{theorem}
 \begin{proof}
-    For the n-step path, after counting all the cycles, it maybe remain some points which haven't form cycles, we call this chain the derived chains.
-    Refer to the Appendix, $\mathcal{E} (G^3(k))$ represents the amount of path with $k$ cycle occuring, and $\Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} $ is the probability of the part formed all cycles. Obviously, the length of the derived chains is no more than 2 (the amount of states is three), then
-    $\min_{\{i, j\}} p_{ij}^{2}$, $\max_{\{i, j\}} p_{ij}^2$ are the lower and upper bound respectively. So
+    For the first n-step path of Markov chains, after counting all the cycles, maybe it still remains some points which haven't form cycles, we call remains the derived chains.
+    Refer to the Appendix, $\mathcal{E} (G^3(k))$ represents the amount of path with $k$ cycle occuring, and $\Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} $ is the probability of the part formed all cycles. Obviously, the length of the derived chains is no more than two (the size of state space is three), then
+    $\min_{\{i, j\}} p_{ij}^{2}$, $\max_{\{i, j\}} p_{ij}^2$ are the lower and upper bound of the probability of the derived chains occuring respectively. So
     \begin{align*}
         \mathbb{P}(J_{n}^c= \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
         \ge \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
@@ -160,7 +168,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     where $h(x)=x\log(x)$. We find that
 
     \begin{align*}
-        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
+        &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
         &= h(\nu_{12} + \nu_{13} + \nu_{23}+\nu_{123}+\nu_{132}) 
         + h(\nu_1 + \nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}) \\
         &+ h(\nu_2 + \nu_{12} + \nu_{123} + \nu_{132} +\nu_{23})
@@ -168,7 +176,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         &- \left[h(\nu_1) + h(\nu_2) + h(\nu_3) + h(\nu_{12}) + h(\nu_{13}) + h(\nu_{23}) + h(\nu_{123}) + h(\nu_{132})\right] \\
         &- \biggl(h(\nu_{12} + \nu_{13} + \nu_{123} +\nu_{132}) + h(\nu_{12} + \nu_{123} + \nu_{132} +\nu_{23}) \\
         & + h(\nu_{13} +\nu_{123} +\nu_{132} +\nu_{23})\biggr)
-        +\sum_{i, j \in S, p_{ij}\neq 0} (\sum_{c \ni[i, j]} \nu_{c}) \log p_{ij} + O(\frac{\log n}{n})
+        +\sum_{i, j, p_{ij}\neq 0} (\sum_{c \ni[i, j]} \nu_{c}) \log p_{ij} + O(\frac{\log n}{n})
     \end{align*}
 
     Merging all the same items, then
@@ -204,15 +212,19 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     \end{align*}
     With this formula, we know
     \begin{align*}
-        w_{12}+w_{13}+w_{23}+w_{123}+w_{132} &= \frac{(1-p_{11})(1-p_{22})(1-p_{33})}{\sum_{i\in I} D(\{i\}^c)} \\
-        &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in I} D(\{i\}^c)}
+        w_{12}+w_{13}+w_{23}+w_{123}+w_{132} &= \frac{(1-p_{11})(1-p_{22})(1-p_{33})}{\sum_{i\in S} D(\{i\}^c)} \\
+        &= \frac{\Pi_{i, j} D(\{i, j\}^c)}{\sum_{i\in S} D(\{i\}^c)}
     \end{align*}
     Since the property of circulation, $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, So
     \begin{align*}
         &\frac{1}{n} \log \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
-        &= -\bigl(\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \\
-        &-(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \\
-        &-\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i}) \bigr)
+        &= -\bigl(\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
+        -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} }
+        -\sum_{i\in S} \nu^i \log (\frac{\nu^i}{w^i}) \bigr) \\
+        &= -\biggl[\sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{w_i} + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
+        - \nu^i \log \frac{\nu^i}{w^i} \right)
+        + \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} \right)
+        -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} }\biggr]
     \end{align*}
     Now we find that
     \begin{align*}
@@ -221,8 +233,8 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         &= O(\frac{\log n}{n}) - \min_{k \in K_n: \mu_n(k) \in B_a(\nu)} I_3^c(\mu_n(k))
     \end{align*}
     And we know:
-    (i) $\bigcup_{n\in \mathbb{N}} \{\mu_n(k): k \in K_n\} \bigcap E$ is dense in $E$.
-    (ii) $\mu \rightarrow I_3^c(\mu)$ is continuous on $E$.
+    (i) $\bigcup_{n\in \mathbb{N}} \{\mu_n(k): k \in K_n\} \bigcap E_3$ is dense in $E_3$.
+    (ii) $\mu \rightarrow I_3^c(\mu)$ is continuous on $E_3$.
     It is analogous to the proof of Sanov's Theorem, then
     \begin{align*}
         \lim_{n \rightarrow \infty} \frac{1}{n} \mathbb{P}(J_n \in B_a(\nu)) 
@@ -245,7 +257,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         \bar{I^c_3}(\bar{\nu}) = \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
     \end{align*}
     where net cycle frequence $\bar{\nu} = \nu_{123} - \nu{132}$, in that $(1,3,2)$ is the anti cycle of $(1,3,2)$, and $\bar{\nu}$ belongs the space
-    $\bar{E}(\bar{\nu}) = \{\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E | \nu_1 +\nu_2 +\nu_3 +2(\nu_{12} +\nu_{13} +\nu_{23}) +3(2\nu_{132} +\bar{\nu})=1\}$
+    $\bar{E}_3(\bar{\nu}) = \{\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E_3 | \nu_1 +\nu_2 +\nu_3 +2(\nu_{12} +\nu_{13} +\nu_{23}) +3(2\nu_{132} +\bar{\nu})=1\}$
 \end{corollary}
 \begin{proof}
     % According to the contraction principle, we know ~\ref{eq:net} exists.
@@ -260,11 +272,11 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     %     &= \lim_{n \rightarrow \infty} \frac{1}{n} \log \max_{k \in \bar{K}_n} \mathcal{E} (G^3(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}} \\
     %     &= - \min_{\nu \in \bar{E}(\bar{\nu})} I^c_3(\nu)
     % \end{align*}
-    Let $f(\nu) = \nu^{123} - \nu^{132}$, so $f: E \rightarrow [-\frac{1}{3}, \frac{1}{3}]$ is a continuous function. Let
+    Let $f(\nu) = \nu^{123} - \nu^{132}$, so $f: E_3 \rightarrow [-\frac{1}{3}, \frac{1}{3}]$ is a continuous function. Let
     \begin{align*}
-        \bar{I^c_3}(\bar{\mu}) = \inf \{I^c_3(\nu): \nu \in E, \mu = f(\nu)\}
+        \bar{I^c_3}(\bar{\mu}) = \inf \{I^c_3(\nu): \nu \in E_3, \mu = f(\nu)\}
     \end{align*}
-    According to contraction principle, $\bar{I^c_3}(\bar{\mu})$ is also a good rate function on $f(E)$.
+    According to contraction principle, $\bar{I^c_3}(\bar{\mu})$ is also a good rate function on $f(E_3)$.
 \end{proof}
 
 \begin{corollary}
@@ -312,10 +324,10 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{proof}
 
 \begin{corollary}
-    $I_3^c$ is finite, continuous, positive and strictly convex on E, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_i/\nu^i = \mu_i/\mu^i, \forall i \in S$ and $\nu_c/(\tilde{\nu}-\sum_{i\in S} \nu_i) =\mu_c/(\tilde{\mu}-\sum_{i\in S} \nu_i), \forall c \in \mathcal{C}_{\infty}$. $I_3^c$ is also affine, i.e. $I_3^c(\alpha \nu) = \alpha I_3^c( \nu)$.
+    $I_3^c$ is finite, continuous, positive and strictly convex on $E_3$, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_i/\nu^i = \mu_i/\mu^i, \forall i \in S$ and $\nu_c/(\tilde{\nu}-\sum_{i\in S} \nu_i) =\mu_c/(\tilde{\mu}-\sum_{i\in S} \nu_i), \forall c \in \mathcal{C}_{\infty}$. $I_3^c$ is also affine, i.e. $I_3^c(\alpha \nu) = \alpha I_3^c( \nu)$.
 \end{corollary}
 \begin{proof}
-    Since $h(x) = x \log x$ is finite on the interval $[0, 1]$, obviously, $I^c_3(\nu)$ is finite on $E$.
+    Since $h(x) = x \log x$ is finite on the interval $[0, 1]$, obviously, $I^c_3(\nu)$ is finite on $E_3$.
     Spliting the item $\sum_{c \in \mathcal{C}_{\infty}} \nu_{c} \log \frac{\nu_{c}}{w_c}$, because
     \begin{align*}
         \nu_i + (\nu^i - \nu_i) &= \nu^i \\
@@ -324,19 +336,19 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     we employ Log sum inequality.
     \begin{align*}
         I^c_3(\nu) 
-        &= \left(\sum_{i\in S} \nu_{i}\log \frac{\nu_{i}}{w_i} + \sum_{i\in S}(\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
-        - \sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} \right)\\
-        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} 
-        -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \right)\\
+        &= \sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{w_i} + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} 
+        - \nu^i \log \frac{\nu^i}{w^i} \right)\\
+        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} \right)
+        -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} }\\
         &= \sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{w_i} 
         + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{w^i - w_i} \right)
         - \sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} \\
-        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} 
-        -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \right)\\ 
+        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{w_c} \right)
+        -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} } \\ 
         &\ge \left(\sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i}  
         - \sum_{i\in S} \nu^i \log \frac{\nu^i}{w^i} \right)\\
-        &+ \left( (\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) 
-        -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{\tilde{\nu} - \sum_{i\in S}\nu_i}{\tilde{w} - \sum_{i\in S}w_i}) \right)\\
+        &+ \left( \tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} } 
+        -\tilde{\nu}\log \frac{\tilde{\nu} }{\tilde{w} } \right)\\
         &\ge 0
     \end{align*}
 
@@ -345,12 +357,12 @@ And $w^i$, $w_i$ is similarly defined for $w$.
         I^c_3(\nu)
         &= \sum_{i\in S} \left(\nu_{i}\log \frac{\nu_{i}}{\nu^i } + (\nu^i - \nu_i)\log \frac{\nu^i - \nu_i}{\nu^i}
         - \nu^i \log \frac{w_i}{w^i} - \nu^i \log \frac{w^i - w_i}{w^i} \right)\\
-        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{\tilde{\nu} - \sum_{i\in S}\nu_i}
-        -(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{ w_c}{\tilde{w} - \sum_{i\in S}w_i}) \right)
+        &+ \left(\sum_{c \in \mathcal{C}_{\infty}, c\neq (i)} \nu_{c} \log \frac{\nu_{c}}{\tilde{\nu} }
+        -\tilde{\nu}\log(\frac{ w_c}{\tilde{w} }) \right)
     \end{align*}
     Obviously, $I_3^c(\alpha \nu) = \alpha I_3^c( \nu)$, so $I_3^c$ is also affine.
     The item 
-    % $\nu^i \log \frac{w_i}{w^i}$, $\nu^i \log \frac{w^i - w_i}{w^i}$ and $(\tilde{\nu} - \sum_{i\in S}\nu_i)\log(\frac{ w_c}{\tilde{w} - \sum_{i\in S}w_i})$ 
+    % $\nu^i \log \frac{w_i}{w^i}$, $\nu^i \log \frac{w^i - w_i}{w^i}$ and $\tilde{\nu}\log(\frac{ w_c}{\tilde{w} })$ 
     involving $w$
     is linear for $\nu$. For the remains, use log-sum inequality again, such as:
     \begin{align*}
@@ -361,8 +373,13 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \end{proof}
 
 \subsection{Large deviation of circulation for  finite state Markov chains}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{n-state2.png}
+    \caption{m-state transition diagram}
+\end{figure}
 \begin{theorem}
-    For the m-state Markov chains, if the rate function exists, it is
+    For the m-state Markov chains, the good rate function is
     \begin{align*}
         I_m^c(\nu)
         &= [h(\nu_{12}+\nu_{1 m}+\nu^+ +\nu^-) - h(\nu_{12}) - h(\nu_{1m})+
@@ -381,9 +398,9 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     \end{align*}
 \end{theorem}
 \begin{proof}
-    If the rate function exists, we know:
+    According to contraction principle, the rate function exists, we know:
     \begin{align*}
-        I_m^c(\nu) = \frac{1}{n} \log \mathcal{E} (G^m(k)) \Pi_{i, j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}.
+        I_m^c(\nu) = \frac{1}{n} \log \mathcal{E} (G^m(k)) \Pi_{i, j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}.
     \end{align*}
     The accumulation part in $\mathcal{E} (G^m(k))$ has no more than $n^{m-1}$ items, and $\frac{1}{n} \log n^{m-1} = O(\frac{\log n}{n})$. The other means for simplification has been mentioned in  Theorem 1.1 many times.
 \end{proof}
@@ -391,7 +408,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{n-state.png}
-    \caption{n-state transition diagram}
+    \caption{Simple m-state transition diagram}
 \end{figure}
 \begin{theorem}
     For the m-state Markov chains, and the non-zero terms only have $\{p_{i, i+1}, i=1, \dots m-1\} \bigcup \{p_{i, i-1}, i=2, \dots m-1\} \bigcup \{p_{m,1}\}$, $(w_{c})_{c \in \mathcal{C}_{\infty}}$ satisfies a large deviation principle, and its rate function is
@@ -450,7 +467,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     Because $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
 \end{proof}
 \begin{corollary}
-    $I_{m'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex on E, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_c/\nu^i = \mu_c/\mu^i, \forall c \ni i$. $I_{m'}^{c}(\nu)$ is also affine, i.e. $I_{m'}^{c}(\alpha \nu) = \alpha I_{m'}^{c}(\nu)$. convex. The proof can be obtained by completely imitating it for $I_{m'}^{c}(\nu)$.
+    $I_{m'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex on $E_{m'}$, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_c/\nu^i = \mu_c/\mu^i, \forall c \ni i$. $I_{m'}^{c}(\nu)$ is also affine, i.e. $I_{m'}^{c}(\alpha \nu) = \alpha I_{m'}^{c}(\nu)$. convex. The proof can be obtained by completely imitating it of $I_{m'}^{c}(\nu)$.
 \end{corollary}
 % \begin{proof}
 %     The finiteness and continuity is obvious, and we also can employ Log-sum inequality to proof its positivity convexity.
@@ -519,12 +536,12 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
 
 \begin{corollary}
     If $p_{1m}=0$, the number of Euler circuits is 
-    \begin{align} \label{eq:12}
+    \begin{equation} \label{eq:12}
         \mathcal{E} (G^{m'} (k))
         = \exp(O \log n)  \binom{k_{12}+k_{1,2\dots ,m}}{k_{12}} 
         \Pi_{i=2}^{m-1} \binom{k_{1,2\dots ,m}+ k_{i-1, i}+ k_{i, i+1}}{k_{i, i+1}}
         \Pi_{i \in S} \binom{\sum_{i\ni c} k_{c}}{\sum_{i\ni c} k_{c} - k_{i}}
-    \end{align}
+    \end{equation}
 \end{corollary}
 \begin{proof}
     Because $p_{1m}=0$, $k^-=0$, we do not need to consider insert 2-state cycle  into $(1,m)$ and $(1, m, m-1, \dots, 2)$. Compairing to Theorem 2.1, only the second step is different, it is:
@@ -557,6 +574,10 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
         &\binom{k_{12} + k_{123} + k_{132} +k_{23} +k_2}{k_2} \binom{k_{13} +k_{123} +k_{132} +k_{23} +k_3}{k_3}
     \end{align*}
 \end{corollary}
+
+\bibliographystyle{alpha}
+\bibliography{reference}
+\nocite{Jia_2016}
 
 
 \end{document}
