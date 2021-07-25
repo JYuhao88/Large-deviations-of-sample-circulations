@@ -50,11 +50,11 @@ For presentation purposes, if the order sequence $i_1, i_2, \dots, i_s$ occurs i
 For the cycle $c_1 = (1,2)$, we use $k_{12}$ to denote the number of cycle $c_1$.
 
 \begin{definition}
-    Let $\mathcal{C}_n(\omega)$ be the class of cycles occurring along the sample path $(\xi_l)_{l\ge 0}$ until time $n$. Then we use $\mathcal{C}_{\infty}$ to represent the limit of $\mathcal{C}_n$ as $n \rightarrow \infty$. This convergence has been proofed in [].
+    Let $\mathcal{C}_n(\omega)$ be the class of cycles occurring along the sample path $(\xi_l)_{l\ge 0}$ until time $n$. Then we use $\mathcal{C}_{\infty}$ to represent the limit of $\mathcal{C}_n$ as $n \rightarrow \infty$. This convergence has been proofed in \cite{jiang2004mathematical}.
 \end{definition}
 
 \begin{definition} %% follow Jia2016
-    Let $k_{c, n}$ denote the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_{n}^c$ along cycle $c$ by time $t$ is defined as
+    Let $k_{c, n}$ represent the number of time that cycle c is formed by a Markov chain up to time $n$. Then the sample circulation $J_{n}^c$ along cycle $c$ by time $t$ is defined as
     $$
     J_{n}^c = \frac{1}{n} k_{c, n} \quad \forall c \in \mathcal{C}_{\infty}
     $$
@@ -80,7 +80,6 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
     and $\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E_m$.
 \end{definition}
 
-
 \section{Large deviation of circulation for finite Markov chains}
 
 \subsection{Large deviation of circulation for three state Markov chains}
@@ -88,7 +87,7 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
 \begin{theorem}
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.3]{3-state.png}
+        \includegraphics[scale=0.3]{chart/3-state.png}
         \caption{3-state transition diagram}
     \end{figure}
 
@@ -125,7 +124,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     The length of the derived chains is no more than 2. And the steps in the derived chains is included in the n steps, so
     \begin{align*}
         \mathbb{P}(J_{n}^c = \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
-        \le \binom{n}{2}
+        \le 3\binom{n}{2}
         \mathcal{E} (G^3(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
         \max_{\{i, j\}} p_{ij}^2
     \end{align*}
@@ -205,7 +204,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     %     w_{123} &= p_{12}p_{23}p_{31} \frac{D(\{1, 2, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)} \\
     %     w_{132} &= p_{13}p_{32}p_{21} \frac{D(\{1, 2, 3\}^c)}{\sum_{i\in I} D(\{i\}^c)}
     % \end{align*}
-    Refer to [Jiang], the calculation formula
+    Refer to \cite{jiang2004mathematical}, the calculation formula
     for circulation is:
     \begin{align*}
         w_c = p_{i_1 i_2} p_{i_2 i_3} \cdots p_{i_{m-1} i_1} \frac{D(\{i_1, i_2, \cdots i_s\}^c)}{\sum_{j\in S} D(\{j\}^c)}
@@ -375,7 +374,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \subsection{Large deviation of circulation for  finite state Markov chains}
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{n-state2.png}
+    \includegraphics[scale=0.3]{chart/n-state2.png}
     \caption{m-state transition diagram}
 \end{figure}
 \begin{theorem}
@@ -407,7 +406,7 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{n-state.png}
+    \includegraphics[scale=0.3]{chart/n-state.png}
     \caption{Simple m-state transition diagram}
 \end{figure}
 \begin{theorem}
@@ -517,13 +516,13 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
     \end{align*}
     \begin{figure}[h]  
         \centering
-        \includegraphics[scale=0.5]{insert1.png}
+        \includegraphics[scale=0.5]{chart/insert1.png}
         \caption{Correct Insertion}
         \label{fig:insert1}
     \end{figure} 
     \begin{figure}[h] 
         \centering
-        \includegraphics[scale=0.5]{insert2.png}
+        \includegraphics[scale=0.5]{chart/insert2.png}
         \caption{Wrong Insertion}
         \label{fig:insert2} 
     \end{figure}
@@ -540,7 +539,7 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
         \mathcal{E} (G^{m'} (k))
         = \exp(O \log n)  \binom{k_{12}+k_{1,2\dots ,m}}{k_{12}} 
         \Pi_{i=2}^{m-1} \binom{k_{1,2\dots ,m}+ k_{i-1, i}+ k_{i, i+1}}{k_{i, i+1}}
-        \Pi_{i \in S} \binom{\sum_{i\ni c} k_{c}}{\sum_{i\ni c} k_{c} - k_{i}}
+        \Pi_{i \in S} \binom{\sum_{c \ni [i]} k_{c}}{\sum_{c \ni [i]} k_{c} - k_{i}}
     \end{equation}
 \end{corollary}
 \begin{proof}
@@ -553,7 +552,7 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
         \mathcal{E} (G^{m'} (k))
         &\le  n \binom{k_{12}+k_{1,2\dots ,m}}{k_{12}} 
         \Pi_{i=2}^{m-1} \binom{k_{1,2\dots ,m}+ k_{i-1, i}+ k_{i, i+1}}{k_{i, i+1}}
-        \Pi_{i \in S} \binom{\sum_{i\ni c} k_{c}}{\sum_{i\ni c} k_{c} - k_{i}}\\
+        \Pi_{i \in S} \binom{\sum_{c \ni [i]} k_{c}}{\sum_{c \ni [i]} k_{c} - k_{i}}\\
     \end{align*}
     We can get ~\ref{eq:12}.
 \end{proof}
@@ -575,9 +574,9 @@ If marking each occurence of state pair $(s, t)$ in $\xi_1, \dots, \xi_n$ by dra
     \end{align*}
 \end{corollary}
 
-\bibliographystyle{alpha}
+
 \bibliography{reference}
-\nocite{Jia_2016}
+\nocite{*}
 
 
 \end{document}
