@@ -19,6 +19,10 @@
 \begin{document}
 
 \maketitle
+
+\section{Introduction}
+
+\section{Monocyclic markov chains and cycle fluxes}
 We consider the following m-step($n\ge 2$) enzyme kinetics model:
 \begin{align} \label{eq:model}
     \bm{E + S \rightleftharpoons
@@ -80,7 +84,7 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
     and $\nu = (\nu_c)_{c \in \mathcal{C}_{\infty}} \in E_m$.
 \end{definition}
 
-\section{Large deviation of circulation for finite Markov chains}
+\section{Large deviation of circulation for Monocyclic Markov chains}
 
 \subsection{Large deviation of circulation for three state Markov chains}
 
@@ -281,12 +285,12 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 \begin{corollary}
     For the two-state Markov chains, we have:
     \begin{align*}
-    I_2^c(\nu) 
-    &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) 
-    + \nu_{2} \log(\frac{\nu_{2}}{\nu_{2}+\nu_{12}}/\frac{w_{2}}{w_{1}+w_{12}}) \\
-    &+ \nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
-    + \nu_{12} \log (\frac{\nu_{12}}{\nu_{2}+\nu_{12}}/\frac{w_{12}}{w_{2}+w_{12}})
-\end{align*}
+        I_2^c(\nu) 
+        &= \nu_{1}\log(\frac{\nu_{1}}{\nu_{1}+\nu_{12}}/\frac{w_{1}}{w_{1}+w_{12}}) 
+        + \nu_{2} \log(\frac{\nu_{2}}{\nu_{2}+\nu_{12}}/\frac{w_{2}}{w_{1}+w_{12}}) \\
+        &+ \nu_{12} \log (\frac{\nu_{12}}{\nu_{1}+\nu_{12}}/\frac{w_{12}}{w_{1}+w_{12}})
+        + \nu_{12} \log (\frac{\nu_{12}}{\nu_{2}+\nu_{12}}/\frac{w_{12}}{w_{2}+w_{12}})
+    \end{align*}
 \end{corollary}
 
 \begin{corollary} \label{}
@@ -463,6 +467,8 @@ And $w^i$, $w_i$ is similarly defined for $w$.
 %         &= 
 %     \end{align*}
 % \end{proof}
+
+\section{conclusion}
 
 \section{Appendix}
 Consider the first n-step of the above Markov chains $(\xi_l)$, we assume that $\xi_{n}=\xi_1$. Let $k=(k_c)_{c \in \mathcal{C}_{\infty}}$ denote the number of each cycle in class  $\mathcal{C}_{\infty}$ occurring.

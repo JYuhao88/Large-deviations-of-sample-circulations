@@ -73,7 +73,7 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
 \begin{definition}
     For m-state Markov chains, we say that $J_{n}^c$ satisfies a large deviation principle with rate $n$ and good rate function $I$ : $E_m \rightarrow [0, \infty]$ if:
     \begin{align}
-        \lim_{n \rightarrow \infty} \frac{1}{n} \log \mathbb{P}(J_{n}^c = \nu_c , c \in \mathcal{C}_{\infty}) = - I(\nu), \quad \forall \nu \in E_m \rightarrow
+        \lim_{n \rightarrow \infty} \frac{1}{n} \log \mathbb{P}(J_{n}^c = \nu_c , c \in \mathcal{C}_{\infty}) = - I(\nu), \quad \forall \nu \in E_m \rightarrow \mathcal{C}_{\infty}
     \end{align}
     where $\sum_{c \in \mathcal{C}_{\infty}} |c| \nu_c = 1$, 
     % $r$ is the size of set $\mathcal{C}_{\infty}$,
@@ -119,14 +119,14 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
     $\min_{\{i, j\}} p_{ij}^{m-1}$, $\max_{\{i, j\}} p_{ij}^{m-1}$ are the lower and upper bound of the probability of the derived chains occuring respectively. So
     \begin{align*}
         \mathbb{P}(J_{n}^c= \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
-        \ge \mathcal{E} (G^m(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
+        \ge \mathcal{E} (G^m(k)) \Pi_{i,j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
         \min_{\{i, j\}} p_{ij}^{m-1}
     \end{align*}
     The length of the derived chains is no more than m-1. And the steps in the derived chains is included in the n steps, so
     \begin{align*}
         \mathbb{P}(J_{n}^c = \frac{k_c}{n}, c \in \mathcal{C}_{\infty}) 
         \le m\binom{n}{2}
-        \mathcal{E} (G^m(k)) \Pi_{i,j \in S} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
+        \mathcal{E} (G^m(k)) \Pi_{i,j} p_{ij}^{\sum_{c \ni [i,j]} k_{c}}
         \max_{\{i, j\}} p_{ij}^{m-1}
     \end{align*}
 
@@ -147,7 +147,7 @@ $E_m = \{\mu=(\mu_c)_{c\in \mathcal{C}_{\infty}} \in [0, 1]^r :\sum_{c \in \math
     \begin{align*}
         K_n = \biggl\{k=(k_c)_{c\in \mathcal{C}_{\infty}}: \sum_{c \in \mathcal{C}_{\infty}} k_{c} |c| \le n \biggr\},
     \end{align*}
-    and this set includes all possible situations of each cycles occuring amount. It can easily observe that the size of this set $|K_n| \le n^m$, $\frac{1}{n} K_n \in E$. 
+    and this set contains all possible situations of each cycles occuring amount. It can easily observe that the size of this set $|K_n| \le n^m$, $\frac{1}{n} K_n \in E$. 
 
     For $\forall k \in K_n$, let $\mu_n(k) = \frac{1}{n} k \in E$. Let us put
     \begin{align*}
@@ -204,11 +204,11 @@ In same ways, we can get:
     &= \frac{\nu^{-}_{i,i+1}+\nu^{-}_{i-1,i}+\nu^-}{\nu^{-}_{i,i+1}+\nu^-}
     \frac{\nu^{-}_{i+1, i+2}+\nu^{-}_{i,i+1}+\nu^-}{\nu^{-}_{i,i+1}}\\
     \nu^+_{i,i+1} + \nu^-_{i,i+1} &= \nu_{i,i+1}, \quad
-    i = 3,4, \dots m-2
+    i = 3,4, \dots m-2 \quad m\ge 5
 \end{align*}
 and
 \begin{align*}
-    \frac{\nu^{+}_{m-2,m-1}+\nu^{+}_{m-1,m}+\nu^{+}}{\nu^{-}_{m-1,m}}
+    \frac{\nu^{+}_{m-2,m-1}+\nu^{+}_{m-1,m}+\nu^{+}}{\nu^{+}_{m-1,m}}
     &=\frac{\nu_{1m}+\nu^{-}_{m-2,m-1}+\nu^{-}}{\nu^{-}_{m-1,m}}
     \frac{\nu^{-}_{m-1,m}+\nu^{-}_{m-2,m-1}+\nu^{-}}{\nu^{-}_{m-1,m}+\nu^{-}} \\
     \nu^+_{m-1,m} + \nu^-_{m-1,m} &= \nu_{m-1,m}.
@@ -232,7 +232,7 @@ Hence, we know above high order equations have the analytical solution.
     The proof is similar in spirit to that of Theorem 1.1, the main difference lies in the simplification of rate function.
     Let 
     \begin{align*}
-        K_n = \biggl\{k=(k_c)_{c\in \mathcal{C}_{\infty}}: \sum_{c \in \mathcal{C}_{\infty}} k_{c} |c| \le n \biggr\},
+        K_n = \biggl\{k=(k_c)_{c\in \mathcal{C}_{\infty}}: \sum_{c \in \mathcal{C}_{\infty}} k_{c} |c| = n \biggr\},
     \end{align*}
     and
     \begin{align*}
@@ -264,12 +264,10 @@ Hence, we know above high order equations have the analytical solution.
         \nu_{1, 2, \dots m} \frac{\Pi_{i=1}^{m-1} (\nu_{i, i+1} + \nu_{1, 2, \dots m})}{\Pi_{i=1}^m \nu^{i}}
         \biggr) \\
     \end{align*}
-    Because $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni (i)} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
+    Because $p_{ij} = \frac{\sum_{c \ni [i,j]} w_c}{\sum_{c \ni [i]} w_c}$, and $w$ substitute for $p_{ij}$ in th formula above, the rate function $I_{n}^{c'}(\nu)$ would be obtained. The rest proof is same as Theorem 1.1.
 \end{proof}
 
-\begin{corollary}
-    $I_{m'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex on $E_{m'}$, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_c/\nu^i = \mu_c/\mu^i, \forall c \ni i$. $I_{m'}^{c}(\nu)$ is also affine, i.e. $I_{m'}^{c}(\alpha \nu) = \alpha I_{m'}^{c}(\nu)$. convex. The proof can be obtained by completely imitating it of $I_{m'}^{c}(\nu)$.
-\end{corollary}
+
 
 \subsection{Large deviation of circulation for three state Markov chains}
 
@@ -522,7 +520,9 @@ And $w^i$, $w_i$ is similarly defined for $w$.
     \end{align*}
 \end{proof}
 
-
+\begin{corollary}
+    $I_{m'}^{c}(\nu)$ is  finite, continuous, positive and strictly convex on $E_{m'}$, except along line segments $\{\alpha \nu + (1-\alpha) \mu: \alpha \in [0,1]\}$, between any $\nu$ and $\mu$ satisfying $\nu_c/\nu^i = \mu_c/\mu^i, \forall c \ni i$. $I_{m'}^{c}(\nu)$ is also affine, i.e. $I_{m'}^{c}(\alpha \nu) = \alpha I_{m'}^{c}(\nu)$. The proof can be obtained by completely imitating it of $I_{3}^{c}(\nu)$.
+\end{corollary}
 
 \section{Appendix}
 Consider the first n-step of the above Markov chains $(\xi_l)$, we assume that $\xi_{n}=\xi_1$, and the number of cycle $c$ occurring is $k_{c}$.
